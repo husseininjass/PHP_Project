@@ -6,11 +6,11 @@ $password = "";
 $db = "onlineshop";
 
 // Create connection
-$con = new mysqli($servername, $username, $password,$db);
+$conn = new mysqli($servername, $username, $password,$db);
 
 // Check connection
-if($con->connect_error){
-    die("Connection Faild: ".$con->connect_error);
+if($conn->connect_error){
+    die("Connection Faild: ".$conn->connect_error);
 }
 
 

@@ -26,12 +26,12 @@ if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="
 		$pic_name=time()."_".$picture_name;
 		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
 		
-mysqli_query($con,"insert into products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) values ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
+    mysqli_query($conn,"INSERT INTO products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) VALUES ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
 
- header("location: sumit_form.php?success=1");
+    header("location: sumit_form.php?success=1");
 }
 
-mysqli_close($con);
+mysqli_close($conn);
 }
 include "sidenav.php";
 include "topheader.php";
@@ -39,7 +39,7 @@ include "topheader.php";
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <form action="" method="post" type="form" name="form" enctype="multipart/form-data">
+          <form action="add_products.php" method="post" type="form" name="form" enctype="multipart/form-data">
           <div class="row">
           
                 

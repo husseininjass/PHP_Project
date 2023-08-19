@@ -38,7 +38,7 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select * from user_info")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from user_info")or die ("query 1 incorrect.....");
 
                         while(list($user_id,$first_name,$last_name,$email,$password,$phone,$address1,$address2)=mysqli_fetch_array($result))
                         {	
@@ -67,12 +67,12 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select * from categories")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from categories")or die ("query 1 incorrect.....");
                         $i=1;
                         while(list($cat_id,$cat_title)=mysqli_fetch_array($result))
                         {	
                             $sql = "SELECT COUNT(*) AS count_items FROM products WHERE product_cat=$i";
-                            $query = mysqli_query($con,$sql);
+                            $query = mysqli_query($conn,$sql);
                             $row = mysqli_fetch_array($query);
                             $count=$row["count_items"];
                             $i++;
@@ -100,13 +100,13 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select * from brands")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from brands")or die ("query 1 incorrect.....");
                         $i=1;
                         while(list($brand_id,$brand_title)=mysqli_fetch_array($result))
                         {	
                             
                             $sql = "SELECT COUNT(*) AS count_items FROM products WHERE product_brand=$i";
-                            $query = mysqli_query($con,$sql);
+                            $query = mysqli_query($conn,$sql);
                             $row = mysqli_fetch_array($query);
                             $count=$row["count_items"];
                             $i++;
@@ -135,7 +135,7 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select * from email_info")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from email_info")or die ("query 1 incorrect.....");
 
                         while(list($brand_id,$brand_title)=mysqli_fetch_array($result))
                         {	

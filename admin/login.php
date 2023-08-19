@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Login</title>
 
-    <!-- Font Icon -->
+   
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
 
-    <!-- Main css -->
+    
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
@@ -55,8 +55,8 @@
 
     </div>
 
-    <!-- JS -->
+    
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 </html>

@@ -39,7 +39,7 @@ include "topheader.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select user_id,first_name,last_name, email, password,mobile,address1,address2 from user_info")or die ("query 2 incorrect.......");
+                        $result=mysqli_query($conn,"select user_id,first_name,last_name, email, password,mobile,address1,address2 from user_info")or die ("query 2 incorrect.......");
 
                         while(list($user_id,$user_name,$user_last,$email,$user_password,$mobile,$address1,$address2)=
                         mysqli_fetch_array($result))
@@ -59,7 +59,7 @@ include "topheader.php";
                         <a class='btn btn-danger' href='manageuser.php?user_id=$user_id&action=delete'>Delete<div class='ripple-container'></div></a>
                         </td></tr>";
                         }
-                        mysqli_close($con);
+                        mysqli_close($conn);
                         ?>
                     </tbody>
                   </table>
