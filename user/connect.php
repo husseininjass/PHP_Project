@@ -3,7 +3,7 @@
 $server="localhost";
 $username="root";
 $password="";
-$dbname="onlineshop";
+$dbname="e-commerce";
 
 $conn=new mysqli($server, $username, $password, $dbname);
 if($conn->connect_error){

@@ -2,37 +2,42 @@
 session_start();
 include("../../user/connect.php");
 
-
 if(isset($_POST['btn_save']))
 {
-$product_name=$_POST['product_name'];
-$details=$_POST['details'];
-$price=$_POST['price'];
-$c_price=$_POST['c_price'];
-$product_type=$_POST['product_type'];
-$brand=$_POST['brand'];
-$tags=$_POST['tags'];
+    $product_name = $_POST['product_name'];
+    $details = $_POST['details']; // description
+    $price = $_POST['price'];
+    $product_type = $_POST['product_type'];
+    $tags = $_POST['tags'];
+    $quantity=$_POST['quantity'];
+    //picture coding
+    $picture_name = $_FILES['picture']['name'];
+    $picture_type = $_FILES['picture']['type'];
+    $picture_tmp_name = $_FILES['picture']['tmp_name'];
+    $picture_size = $_FILES['picture']['size'];
 
-//picture coding
-$picture_name=$_FILES['picture']['name'];
-$picture_type=$_FILES['picture']['type'];
-$picture_tmp_name=$_FILES['picture']['tmp_name'];
-$picture_size=$_FILES['picture']['size'];
+    if($picture_type == "image/jpeg" || $picture_type == "image/jpg" || $picture_type == "image/png" || $picture_type == "image/gif")
+    {
+        if($picture_size <= 50000000)
+        {
+            $pic_name = time() . "_" . $picture_name;
+            move_uploaded_file($picture_tmp_name, "../product_images/" . $pic_name);
+            $sql = "INSERT INTO products (category_id , product_name , price, quantity , description , photo) VALUES('$product_type' , '$product_name' , '$price' , '$quantity' , '$details' , '$pic_name')";
+            if($conn->query($sql) === true){
+              header("location: sumit_form.php?success=1");
+            }
+            else{
+              echo "Error: " . $sql . "<br>" . $conn->error;
+            }
 
-if($picture_type=="image/jpeg" || $picture_type=="image/jpg" || $picture_type=="image/png" || $picture_type=="image/gif")
-{
-	if($picture_size<=50000000)
-	
-		$pic_name=time()."_".$picture_name;
-		move_uploaded_file($picture_tmp_name,"../product_images/".$pic_name);
-		
-    mysqli_query($conn,"INSERT INTO products (product_cat, product_brand,product_title,product_price, product_desc, product_image,product_keywords) VALUES ('$product_type','$brand','$product_name','$price','$details','$pic_name','$tags')") or die ("query incorrect");
+            
+        }
+        
+    }
 
-    header("location: sumit_form.php?success=1");
+    mysqli_close($conn);
 }
 
-mysqli_close($conn);
-}
 include "sidenav.php";
 include "topheader.php";
 ?>
@@ -102,8 +107,8 @@ include "topheader.php";
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label for="">Product Brand</label>
-                        <input type="number" id="brand" name="brand" required class="form-control">
+                        <label for="">quantity</label>
+                        <input type="number" id="brand" name="quantity" required class="form-control">
                       </div>
                     </div>
                      
