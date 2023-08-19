@@ -8,162 +8,176 @@
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-    <!-- <table>
-        <tbody>
-            <tr>
-                <td>First Name :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Last Name :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Email :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Password :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Phone :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>City :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-            <tr>
-                <td>Address :</td>
-                <td></td>
-                <td>
-                    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-                </td>
-            </tr>
-        </tbody>
-    </table> -->
-
     <div>
-        <div class="view">
+        <!---------------First Name------------>
+        <!---------------First Name------------>
+        <!---------------First Name------------>
+        <div id="viewfname-div" class="view">
             <p>First name:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="fnamep"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editfname()"></i></p>
         </div>
-        <div style="display: block;">
-            <label for="fname">First name:</label>
-            <br>
-            <input type="text" id="fname">
-            <br>
-            <input type="button" id="fnamebtn" value="Save">
+        <div id="editfname-div" style="display: none;" class="edit">
+            <form method="post">
+                <label for="fname">First name:</label>
+                <br>
+                <input type="text" id="fname">
+                <p id="fnamePValid" class="invalid" style="display: none;">Letters Only</p>
+                <br>
+                <input type="button" id="fnamebtn" value="Save">
+                <input type="button" id="fnamecancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+        
+        
+        <!---------------Last Name------------>
+        <!---------------Last Name------------>
+        <!---------------Last Name------------>
+        <div id="viewlname-div" class="view">
             <p>Last name:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="lnamep"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editlname()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="lname">Last name:</label>
-            <br>
-            <input type="text" id="lname">
-            <br>
-            <input type="button" id="lnamebtn" value="Save">
+        <div id="editlname-div" style="display: none;" class="edit">
+            <form method="post">
+                <label for="lname">Last name:</label>
+                <br>
+                <input type="text" id="lname">
+                <p id="lnamePValid" class="invalid" style="display: none;">Letters Only</p>
+                <br>
+                <input type="button" id="lnamebtn" value="Save">
+                <input type="button" id="lnamecancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+        
+        
+        <!---------------Email------------>
+        <!---------------Email------------>
+        <!---------------Email------------>
+        <div id="viewemail-div" class="view">
             <p>Email:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="emailp"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editemail()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="email">email:</label>
-            <br>
-            <input type="text" id="email">
-            <br>
-            <input type="button" id="emailbtn" value="Save">
+        <div id="editemail-div" style="display: none;" class="edit">
+            <form method="post">
+                <label for="email">email:</label>
+                <br>
+                <input type="text" id="email">
+                <p id="emailPValid" class="invalid" style="display: none;">example@mail.com</p>
+                <br>
+                <input type="button" id="emailbtn" value="Save">
+                <input type="button" id="emailcancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+        
+        
+        <!---------------Password------------>
+        <!---------------Password------------>
+        <!---------------Password------------>
+        <div id="viewpassword-div" class="view">
             <p>Password:</p>
             <p>*********</p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editpassword()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="oldPassword">Old Password:</label>
-            <br>
-            <input type="password" id="oldPassword">
-            <br>
-            <label for="newPassword">New Password:</label>
-            <br>
-            <input type="password" id="NewPassword">
-            <br>
-            <input type="button" id="passwordBtn" value="Save">
+        <div id="editpassword-div" style="display: none;" class="edit">
+            <form method="post">
+                <label for="oldPassword">Old Password:</label>
+                <br>
+                <input type="password" id="oldPassword"><br>
+                <p id="invalid password" style="display: none;">Incorrect Password</p>
+                <br>
+                <label for="newPassword">New Password:</label>
+                <br>
+                <input type="password" id="NewPassword">
+                <p id="numberPass" style="display: none;" ><b>Number</b></p>
+                <p id="spacePass" style="display: none;" ><b>No Space</b></p>
+                <p id="capitalPass" style="display: none;" ><b>Uppercase</b> letter</p>
+                <p id="letterPass" style="display: none;" ><b>Lowercase</b> letter</p>
+                <p id="lengthPass" style="display: none;" ><b>(8-32) characters</b></p>
+                <p id="spChPass" style="display: none;" ><b>Special Characters</b></p>
+                <br>
+                <input type="button" id="passwordBtn" value="Save">
+                <input type="button" id="passwordcancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+        
+        
+        
+        <!---------------Phone------------>
+        <!---------------Phone------------>
+        <!---------------Phone------------>
+        <div class="view" id="viewphone-div">
             <p>Phone:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="phonep"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editphone()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="phone">Phone:</label>
-            <br>
-            <input type="number" id="phone">
-            <br>
-            <input type="button" id="phonebtn" value="Save">
+        <div style="display: none;" id="editphone-div" class="edit">
+            <form method="post">
+                <label for="phone">Phone:</label>
+                <br>
+                <input type="number" id="phone">
+                <p id="phonePValid" class="invalid" style="display: none;">10-Digits (0123456789)</p>
+                <br>
+                <input type="button" id="phonebtn" value="Save">
+                <input type="button" id="phonecancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+        
+        
+        <!---------------City------------>
+        <!---------------City------------>
+        <!---------------City------------>
+        <div class="view" id="viewcity-div">
             <p>City:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="cityp"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editcity()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="city">City:</label>
-            <br>
-            <select id="city">
-                <option  selected disabled>City</option>
-                <option value="Amman">Amman</option>
-                <option value="Ajloun">Ajloun</option>
-                <option value="Aqaba">Aqaba</option>
-                <option value="Balqa">Balqa</option>
-                <option value="Irbid">Irbid</option>
-                <option value="Jerash">Jerash</option>
-                <option value="Karak">Karak</option>
-                <option value="Ma'an">Ma'an</option>
-                <option value="Madaba">Madaba</option>
-                <option value="Mafraq">Mafraq</option>
-                <option value="Tafilah">Tafilah</option>
-                <option value="Zarqa">Zarqa</option>
-            </select>
-            <br>
-            <input type="button" id="citybtn" value="Save">
+        <div style="display: none;" id="editcity-div" class="edit">
+            <form method="post">
+                <label for="city">City:</label>
+                <br>
+                <select id="city">
+                    <option  selected disabled>City</option>
+                    <option value="Amman">Amman</option>
+                    <option value="Ajloun">Ajloun</option>
+                    <option value="Aqaba">Aqaba</option>
+                    <option value="Balqa">Balqa</option>
+                    <option value="Irbid">Irbid</option>
+                    <option value="Jerash">Jerash</option>
+                    <option value="Karak">Karak</option>
+                    <option value="Ma'an">Ma'an</option>
+                    <option value="Madaba">Madaba</option>
+                    <option value="Mafraq">Mafraq</option>
+                    <option value="Tafilah">Tafilah</option>
+                    <option value="Zarqa">Zarqa</option>
+                </select>
+                <p id="cityPValid" class="invalid" style="display: none;">Select City</p>
+                <br>
+                <input type="button" id="citybtn" value="Save">
+                <input type="button" id="citycancel" value="cancel">
+            </form>
         </div>
-        <div class="view">
+
+
+        <!---------------Address------------>
+        <!---------------Address------------>
+        <!---------------Address------------>
+        <div class="view" id="viewaddress-div">
             <p>Address:</p>
-            <p></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg"></i></p>
+            <p id="addressp"></p>
+            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editaddress()"></i></p>
         </div>
-        <div style="display: none;">
-            <label for="address">Address:</label>
-            <br>
-            <input type="text" id="address">
-            <br>
-            <input type="button" id="addressBtn" value="Save">
+        <div style="display: none;" id="editaddress-div" class="edit">
+            <form method="post">
+                <label for="address">Address:</label>
+                <br>
+                <textarea rows="5" cols="20" id="address"></textarea>
+                <p id="addressPValid" class="invalid" style="display: none;">Insert your address</p>
+                <br/>
+                <input type="button" id="addressBtn" value="Save">
+                <input type="button" id="addresscancel" value="cancel">
+            </form>
         </div>
     </div>
 
