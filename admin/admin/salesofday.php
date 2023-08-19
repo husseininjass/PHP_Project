@@ -1,5 +1,5 @@
 
-    <?php
+<?php
 session_start();
 include("../../user/connect.php");
 
@@ -9,7 +9,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 $order_id=$_GET['order_id'];
 
 /*this is delet query*/
-mysqli_query($con,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
+mysqli_query($conn,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
 } 
 
 ///pagination
@@ -46,7 +46,7 @@ include "topheader.php";
                     <tbody>
                       <?php
                       $query = "SELECT * FROM orders_info";
-                      $run = mysqli_query($con,$query);
+                      $run = mysqli_query($conn,$query);
                       if(mysqli_num_rows($run) > 0){
 
 
@@ -63,12 +63,12 @@ include "topheader.php";
                             <td><?php echo $order_id ?></td>
                            <td> <?php
                             $query1 = "SELECT * FROM order_products where order_id = $order_id";
-                            $run1 = mysqli_query($con,$query1); 
+                            $run1 = mysqli_query($conn,$query1); 
                               while($row1 = mysqli_fetch_array($run1)){
                                $product_id = $row1['product_id'];
 
                                $query2 = "SELECT * FROM products where product_id = $product_id";
-                               $run2 = mysqli_query($con,$query2);
+                               $run2 = mysqli_query($conn,$query2);
 
                                while($row2 = mysqli_fetch_array($run2)){
                                $product_title = $row2['product_title'];

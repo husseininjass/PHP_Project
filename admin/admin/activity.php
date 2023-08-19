@@ -1,5 +1,5 @@
 
-    <?php
+<?php
 session_start();
 include("../../user/connect.php");
 
@@ -9,7 +9,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 $order_id=$_GET['order_id'];
 
 /*this is delet query*/
-mysqli_query($con,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
+mysqli_query($conn,"delete from orders where order_id='$order_id'")or die("delete query is incorrect...");
 } 
 
 ///pagination
@@ -45,7 +45,7 @@ include "topheader.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select user_id, email,mobile,last_login,last_logout from user_info Limit $page1,10")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select user_id, email,mobile,last_login,last_logout from user_info Limit $page1,10")or die ("query 1 incorrect.....");
 
                         while(list($user_id,$email,$mobile,$last_login,$last_logout)=mysqli_fetch_array($result))
                         {	
@@ -76,7 +76,7 @@ include "topheader.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select user_id, email,mobile,login_time,logout_time from user_info Limit $page1,10")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select user_id, email,mobile,login_time,logout_time from user_info Limit $page1,10")or die ("query 1 incorrect.....");
 
                         while(list($user_id,$email,$mobile,$last_login,$last_logout)=mysqli_fetch_array($result))
                         { 
