@@ -6,7 +6,7 @@ if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
 $product_id=$_GET['product_id'];
 ///////picture delete/////////
-$result=mysqli_query($con,"select product_image from products where product_id='$product_id'")
+$result=mysqli_query($conn,"select product_image from products where product_id='$product_id'")
 or die("query is incorrect...");
 
 list($picture)=mysqli_fetch_array($result);
@@ -19,7 +19,7 @@ if(file_exists($path)==true)
 else
 {}
 /*this is delet query*/
-mysqli_query($con,"delete from products where product_id='$product_id'")or die("query is incorrect...");
+mysqli_query($conn,"delete from products where product_id='$product_id'")or die("query is incorrect...");
 }
 
 ///pagination
@@ -57,7 +57,7 @@ include "topheader.php";
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($con,"select product_id,product_image, product_title,product_price from products  where  product_cat=2 or product_cat=3 or product_cat=4 Limit $page1,12")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select product_id,product_image, product_title,product_price from products  where  product_cat=2 or product_cat=3 or product_cat=4 Limit $page1,12")or die ("query 1 incorrect.....");
 
                         while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
                         {
@@ -85,7 +85,7 @@ include "topheader.php";
                  <?php 
 //counting paging
 
-                $paging=mysqli_query($con,"select product_id,product_image, product_title,product_price from products");
+                $paging=mysqli_query($conn,"select product_id,product_image, product_title,product_price from products");
                 $count=mysqli_num_rows($paging);
 
                 $a=$count/10;

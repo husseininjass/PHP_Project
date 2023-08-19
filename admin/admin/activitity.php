@@ -1,4 +1,4 @@
-  <?php 
+<?php 
 include("../../db.php");
  
   ?>
@@ -13,7 +13,7 @@ include("../../db.php");
                   <p class="card-category">Total users</p>
                   <h3 class="card-title">
                       <?php  $query = "SELECT user_id FROM user_info"; 
-                                      $result = mysqli_query($con, $query); 
+                                      $result = mysqli_query($conn, $query); 
                                        if ($result) 
                         { 
                             // it return number of rows in the table. 
@@ -36,7 +36,7 @@ include("../../db.php");
                   </div>
                   <p class="card-category">Total Catagories</p>
                   <h3 class="card-title"> <?php  $query = "SELECT cat_id FROM categories"; 
-                                      $result = mysqli_query($con, $query); 
+                                      $result = mysqli_query($conn, $query); 
                                        if ($result) 
                     { 
                         // it return number of rows in the table. 
@@ -58,7 +58,7 @@ include("../../db.php");
                   </div>
                   <p class="card-category">Total sellers</p>
                   <h3 class="card-title"><?php  $query = "SELECT user_id FROM user_info"; 
-                                      $result = mysqli_query($con, $query); 
+                                      $result = mysqli_query($conn, $query); 
                                        if ($result) 
                     { 
                         // it return number of rows in the table. 
@@ -80,7 +80,7 @@ include("../../db.php");
                   </div>
                   <p class="card-category">Total Orders</p>
                   <h3 class="card-title"><?php  $query = "SELECT order_id FROM orders_info"; 
-                                      $result = mysqli_query($con, $query); 
+                                      $result = mysqli_query($conn, $query); 
                                        if ($result) 
                         { 
                             // it return number of rows in the table. 

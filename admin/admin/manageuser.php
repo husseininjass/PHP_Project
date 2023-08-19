@@ -1,14 +1,14 @@
 
-    <?php
+<?php
 session_start();
-include("../../db.php");
-// include("../../user/connect.php");
+// include("../../db.php");
+include("../../user/connect.php");
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {
 $user_id=$_GET['user_id'];
 
 /*this is delet quer*/
-mysqli_query($con,"delete from user_info where user_id='$user_id'")or die("query is incorrect...");
+mysqli_query($conn,"delete from users where user_id='$user_id'")or die("query is incorrect...");
 }
 
 include "sidenav.php";
@@ -35,13 +35,13 @@ include "topheader.php";
                 <th>mobile</th>
                 <th>city</th>
                 <th>Address</th>
-	<th><a href="addsuppliers.php" class="btn btn-success">Add New</a></th>
+	                      <th><a href="addsuppliers.php" class="btn btn-success">Add New</a></th>
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($con,"select user_id,first_name,last_name, email, password,mobile,address1,address2 from user_info")or die ("query 2 incorrect.......");
+                        $result=mysqli_query($conn,"select user_id,first_name,last_name, email, password,address,phone,city from users")or die ("query 2 incorrect.......");
 
-                        while(list($user_id,$user_name,$user_last,$email,$user_password,$mobile,$address1,$address2)=
+                        while(list($user_id,$user_name,$user_last,$email,$password,$address,$mobile,$city)=
                         mysqli_fetch_array($result))
                         {
                         echo "<tr>
@@ -50,16 +50,18 @@ include "topheader.php";
                           <td>$user_last</td>
                            <td>$email</td>
 
-                        <td>$user_password</td>
+                        <td>$password</td>
                          <td>$mobile</td>
-                          <td>$address1</td>
-                           <td>$address2</td>";
+                          <td>$address</td>
+                           <td>$city</td>";
                         echo"<td>
-                     
+                          
+                        
                         <a class='btn btn-danger' href='manageuser.php?user_id=$user_id&action=delete'>Delete<div class='ripple-container'></div></a>
                         </td></tr>";
+                        
                         }
-                        mysqli_close($con);
+                        mysqli_close($conn);
                         ?>
                     </tbody>
                   </table>

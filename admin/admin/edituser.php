@@ -1,5 +1,5 @@
 
-    <?php
+<?php
 session_start();
 include("../../user/connect.php");
 $user_id=$_REQUEST['user_id'];
@@ -13,10 +13,10 @@ $last_name=$_POST['last_name'];
 $email=$_POST['email'];
 $user_password=$_POST['password'];
 
-mysqli_query($con,"update user_info set first_name='$first_name', last_name='$last_name', email='$email', password='$user_password' where user_id='$user_id'")or die("Query 2 is inncorrect..........");
+mysqli_query($conn,"update user_info set first_name='$first_name', last_name='$last_name', email='$email', password='$user_password' where user_id='$user_id'")or die("Query 2 is inncorrect..........");
 
 header("location: manageuser.php");
-mysqli_close($con);
+mysqli_close($conn);
 }
 include "sidenav.php";
 include "topheader.php";
