@@ -94,15 +94,6 @@ document.getElementById('orderBtn').addEventListener('click',function(){
     .then(response=>response.json())
     .then(data=>{
         data.map(element=>{
-            // let diff=
-            // console.log("quantity",element['quantity']," ", "count",element['conte']);
-
-            // let quantity=element['quantity'];
-            // let count=element['conte'];
-            // console.log(element['quantity']);
-            // console.log(element['conte']);
-            // console.log(typeof(quantity));
-            // console.log( (quantity >= count));
             if(+element['quantity'] >= +element['conte']){
                 localStorage.setItem('is_ready',1);
                  quantity=element['quantity']-element['conte'];
@@ -124,34 +115,20 @@ document.getElementById('orderBtn').addEventListener('click',function(){
                 .catch(error=>{
                     alert("Error:",error);
                   })
-                  
-                  //add order in orders table
-                //   fetch("addOrder.php",{
-                //     method: "POST",
-                //     headers:{
-                //         "Content-Type":"application/json",
-                //     },
-                //     body:JSON.stringify({ 
-                //         edit:3,
-                //     }),
-                // })
-                // .then(response=>response.json())
-                // .then(data=>{
-                // })
-                // .catch(error=>{
-                //     alert("Error:",error);
-                //   })
-
             }else{
                 document.getElementById('errorP').textContent="we haven't enough quantity of " + element['product_name'] + ", max-count you can order is " + element['quantity'];
+                localStorage.setItem('is_ready',0);
             }
         })
     })
     .catch(error=>{
       alert("Error:",error);
     })
+
+    //add order in orders table
     let is_ready=localStorage.getItem('is_ready');
     if(is_ready){
+        localStorage.setItem('is_ready',0);
         fetch("addOrder.php",{
                 method: "POST",
                 headers:{
@@ -162,9 +139,32 @@ document.getElementById('orderBtn').addEventListener('click',function(){
             })
             .then(response=>response.json())
             .then(data=>{
+                // console.log(data['id']);
+
+                //update is_ordered and order_id in cart
+                fetch("updateCart.php",{
+                    method: "POST",
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                    body:JSON.stringify({ 
+                        order_id:data['id'],
+
+                    }),
+                })
+                .then(response=>response.json())
+                .then(data=>{
+                    console.log(data);
+                    
+                    
+                })
+                .catch(error=>{
+                    alert("Error:",error);
+                })
+                
             })
             .catch(error=>{
                 alert("Error:",error);
-              })
+            })
     }
 })
