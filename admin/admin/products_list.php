@@ -27,6 +27,46 @@ if (isset($_GET['action']) && $_GET['action'] != "" && $_GET['action'] == 'delet
   $stmt->execute();
   $stmt->close();
 }
+//update products
+$display = 'none';
+if(isset($_POST["updateproduct"])){
+  $product_id=$_POST['product_id'];
+  $stat = "SELECT * FROM products WHERE product_id=$product_id";
+  $result = mysqli_query($conn,$stat);
+  $resultcheck1 = mysqli_num_rows($result);
+  if($resultcheck1 > 0)
+  {
+      while($row = mysqli_fetch_assoc($result))
+
+      {   
+          $product_id = $row['product_id'];
+          $newfName= $row["product_name"];
+          $newlName= $row["price"];
+          // $newEmail= $row[""];
+          $newmobile= $row["quantity"];
+          $newPassword= $row["description"];
+          $display= 'block';
+      }
+  }
+}
+if(isset($_POST["update"])){
+  $newfName= $_POST["productname"];
+  $newlName= $_POST["price"];
+  // $newEmail= $_POST["newEmail"];
+  $newmobile= $_POST["quantity"];
+  $newPassword= $_POST["description"];
+ 
+  $product_id=$_POST['productid'];
+  $query1= "
+  UPDATE products SET product_name='$newfName',
+   price='$newlName',
+  quantity='$newmobile',
+  description='$newPassword'
+   WHERE product_id='$product_id'
+   ";
+  $result = mysqli_query($conn,$query1);
+  $display= 'none';
+}
 
 // pagination
 
@@ -50,6 +90,21 @@ $page1=($page*10)-10;
          <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
+              <div id="editdiv" style="display: <?php echo $display?>; ">
+                    <form action="products_list.php" method="post">
+                        <input type="hidden" value="<?php echo $product_id?>" name="productid">
+                        <label class="col-2">Product Name:</label>
+                        <input class="col-5" type="text" value="<?php echo $newfName?>" name="productname"><br>
+                        <label class="col-2">Price:</label>
+                        <input class="col-5" type="number" value="<?php echo $newlName?>" name="price"><br>
+                        <label class="col-2">Quantity:</label>
+                        <input class="col-5" type="number" value="<?php echo $newmobile?>" name="quantity"><br>
+                        <label class="col-2">Discription</label>
+                        <input class="col-5" type="text" value="<?php echo $newPassword?>" name="description"><br>
+                     
+                        <input type="submit" class="btn btn-outline-secondary" value="Save" name="update">
+                    </form>
+              </div>
                 <h4 class="card-title"> Products List</h4>
                 
               </div>
@@ -57,7 +112,7 @@ $page1=($page*10)-10;
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Name</th><th>Price</th><th>quantity</th>
+                      <tr><th>Image</th><th>Product Id</th><th>Name</th><th>Price</th><th>quantity</th>
 	                      <a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
                     <tbody>
                       <?php 
@@ -71,10 +126,15 @@ $page1=($page*10)-10;
                        $price = $row['price'];
                        $quantity = $row['quantity'];
                        $product_id = $row['product_id'];
-                        echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
+                        echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_id</td><td>$product_name</td>
                         <td>$price</td><td>$quantity</td>
                         <td>
                         <a class=' btn btn-success' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        
+                        <form method='post'>
+                        <input type='hidden' value=' " . $product_id . "' name='product_id'>
+                        <input class='btn btn-outline-primary' type='submit' value='Edit' name='updateproduct'>
+                        </form>
                         </td></tr>";
                         }
 

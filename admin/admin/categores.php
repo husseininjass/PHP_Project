@@ -6,13 +6,9 @@ if(isset($_POST['add']))
 {
 $category_id=$_POST['categoryid'];
 
-
-/*this is delet quer*/
   $query = "DELETE FROM categores WHERE category_id = $category_id";
-  // $stmt = $conn->prepare($query);
-  // $stmt->bind_param("i", $category_id);
   mysqli_query($conn , $query);
-  // $conn->close();
+  
 }
 
 $display = 'none';
