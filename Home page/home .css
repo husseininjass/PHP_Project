@@ -1,0 +1,355 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #24262b; */
+    padding: 10px 20px;
+    color: #ffffff;
+}
+
+.navbar-logo img {
+    width: 20%;
+    height: 30%;
+    
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    margin-left: 12%;
+    margin-top: -10%;
+    
+}
+
+.navbar-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.icons a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 24px;
+   display: grid;
+   align-items: center;
+}
+/* Responsive styles */
+@media (max-width: 767px) {
+    .navbar-links {
+        display: none;
+    }
+
+    .icons {
+        display: flex;
+    }
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ 
+ body {
+    background:url(./0m8.PNG);
+    background-size: cover;
+  }
+  .navbar {
+    overflow: hidden;
+  }
+
+  .navbar-logo img {
+    width: 40%;
+  }
+  .navbar a {
+    float: right;
+    font-size: x-large;
+    color: #ffffff;
+    text-align: center;
+    padding: 2px 5px;
+    margin-right: 120px;
+    text-decoration: none ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+  }
+ 
+  .container{
+    max-width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.swiper{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.swiper-slide img{
+    width: 90%;
+    height: 100%;
+}
+.swiper .swiper-button-prev , .swiper .swiper-button-next{
+    width: 50px; 
+    height: 50px; 
+    background-color: #000000; 
+    color: white;  
+    border-radius: 50%; 
+
+    cursor: pointer;
+}
+.swiper .swiper-pagination-bullet-active{ 
+    background-color: black;
+}
+@media(min-width: 280px) and (max-width: 1800px){
+    .container{
+        max-width: 100% !important;
+    }
+    .swiper-slide img{
+        width: 90% !important;
+    }
+
+}
+@media(min-width: 280px) and (max-width: 800px){
+    .swiper .swiper-button-prev::after , .swiper .swiper-button-next::after{
+        width: 30px; 
+        height: 18px; 
+        font-size: 18px; 
+
+    }
+    .swiper .swiper-button-prev , .swiper .swiper-button-next{
+        width: 30px;
+        height: 30px;
+    }
+}
+.sales{
+    background-color: white;
+    color: #000000;
+    text-align: center;
+    font-size: xx-large;
+    display: grid;
+    margin-top: 8%;
+    width: 20%;
+    margin-left: 38%;
+
+}
+
+
+.signin-signup{
+  margin-left: 500px;
+  text-decoration: none;
+  color: black;
+}
+.show-more-button{
+    background-color: white;
+    color: #000000;
+    text-align: center;
+    font-size: xx-large;
+    display: grid;
+    width: 15%;
+    margin-left: 85%;
+    margin-top: 4%;
+    border-radius: 5px;
+    box-shadow:  0 0 30px rgb(0, 66, 247);
+}
+button:hover{
+    box-shadow: 0 0 5px #e9f1e94d,
+    0 0 10px rgb(255, 255, 255),
+    0 0 15px #ffffff,
+    0 2px 0 rgb(243, 2, 2);
+}
+.cards-row {
+    display: flex;
+    
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px; /* إضافة هامش أعلى */
+  }
+  .card {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* إضافة حجم أكبر */
+    width: 300px;
+    height: 400px;
+    margin: 0 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  .card img {
+    max-width: 100%;
+    max-height: 200px; /* قيمة جديدة لارتفاع الصورة */
+    border-radius: 8px;
+  }
+  .card h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #333;
+  }
+  .shop-button {
+    margin-top: 10%;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .shop-button:hover {
+    background-color: #0056b3;
+  }
+ 
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Global Styles */
+body {
+  line-height: 1.5;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container and Layout */
+.container {
+  max-width: 1170px;
+  margin: auto;
+
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+ul {
+  list-style: none;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #071850;
+  /* padding: 70px 0; */
+  color: #ffffff;
+  
+  
+}
+
+/* Arrange .footer-col elements side by side with space between */
+.footer-col {
+  flex: 1;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  margin-left: 120px;
+}
+
+/* Add space between .footer-col elements */
+.footer-col:not(:last-child) {
+  margin-right: 20px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.footer-col h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #e91e63;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #ffffff;
+  text-decoration: none;
+  color: #ffffff;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+.footer-col .social-links a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.footer-col .social-links a:hover {
+  background-color: #e91e63;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+  .footer-col {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+
+  .footer-col:not(:last-child) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 574px) {
+  .footer-col {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.fas {
+    color: rgb(255, 255, 255);
+}
+.fa-envelope{
+    color: rgb(255, 255, 255);
+}
+li{
+    color: rgb(255, 255, 255);
+}
+
