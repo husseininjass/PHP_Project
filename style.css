@@ -1,0 +1,88 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:  'Poppins', sans-serif; 
+}
+body {
+ 
+  background-image: url(./img/Blue\ Gradient\ Technology\ Poster.png); 
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    
+    padding: 0 2%;
+    /* border-bottom: solid 2px ; */
+}
+.left-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+.right-heading {
+    display: flex; 
+    justify-content: center;
+     align-items: center;
+     height: inherit;
+ }
+
+ ul{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ }
+  li{
+  display: block;  
+  justify-content: space-between;
+  align-items: center;
+  float: right;
+ }
+  li a{
+    justify-content: space-between;
+  align-items: center;
+  color: black;
+  display: block;
+  /* color: white; */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  
+ }
+ ul li a:hover{
+    box-shadow: black;
+    color: azure;
+    background-color: black;
+ }
+ .logo{
+   height: inherit;
+   padding-right: 1rem;
+   
+ }
+ .logo img{
+     height: 100%;
+     border-radius: 50%;
+ }
+ i{
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    display: block;
+    /* color: white; */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+ }
+ .form-select{
+    background-color: blue;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+  
