@@ -45,6 +45,7 @@ if(isset($_POST["updateproduct"])){
           // $newEmail= $row[""];
           $newmobile= $row["quantity"];
           $newPassword= $row["description"];
+          $sale = $row['sale'];
           $display= 'block';
       }
   }
@@ -55,13 +56,14 @@ if(isset($_POST["update"])){
   // $newEmail= $_POST["newEmail"];
   $newmobile= $_POST["quantity"];
   $newPassword= $_POST["description"];
- 
+  $sale = $_POST['sale'];
   $product_id=$_POST['productid'];
   $query1= "
   UPDATE products SET product_name='$newfName',
    price='$newlName',
   quantity='$newmobile',
-  description='$newPassword'
+  description='$newPassword',
+  sale='$sale'
    WHERE product_id='$product_id'
    ";
   $result = mysqli_query($conn,$query1);
@@ -101,6 +103,9 @@ $page1=($page*10)-10;
                         <input class="col-5" type="number" value="<?php echo $newmobile?>" name="quantity"><br>
                         <label class="col-2">Discription</label>
                         <input class="col-5" type="text" value="<?php echo $newPassword?>" name="description"><br>
+                        <label class="col-2">sale</label>
+                        <input class="col-5" type="number" value="<?php echo $sale?>" name="sale"><br>
+                        
                      
                         <input type="submit" class="btn btn-outline-secondary" value="Save" name="update">
                     </form>
@@ -112,7 +117,7 @@ $page1=($page*10)-10;
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Product Id</th><th>Name</th><th>Price</th><th>quantity</th>
+                      <tr><th>Image</th><th>Product Id</th><th>Name</th><th>Price</th><th>Sale %</th><th>Quantity</th>
 	                      <a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
                     <tbody>
                       <?php 
@@ -126,8 +131,9 @@ $page1=($page*10)-10;
                        $price = $row['price'];
                        $quantity = $row['quantity'];
                        $product_id = $row['product_id'];
+                       $sale = $row['sale'];
                         echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_id</td><td>$product_name</td>
-                        <td>$price</td><td>$quantity</td>
+                        <td>$price</td><td>$sale</td><td>$quantity</td>
                         <td>
                         <a class=' btn btn-success' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
                         
