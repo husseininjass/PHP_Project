@@ -2,12 +2,17 @@
 <?php
 session_start();
 include("../../user/connect.php");
-if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
+if(isset($_POST['add']))
 {
-$category_id=$_GET['category_id'];
+$category_id=$_POST['categoryid'];
+
 
 /*this is delet quer*/
-mysqli_query($conn,"delete from categores where category_id='$category_id'")or die("query is incorrect...");
+  $query = "DELETE FROM categores WHERE category_id = $category_id";
+  // $stmt = $conn->prepare($query);
+  // $stmt->bind_param("i", $category_id);
+  mysqli_query($conn , $query);
+  // $conn->close();
 }
 
 $display = 'none';
@@ -106,11 +111,14 @@ include "topheader.php";
                         <form method="post">
                         <input type="hidden" value="' . $category_id . '" name="categoryid">
                         <input class="btn btn-outline-primary" type="submit" value="Edit" name="edituser">
-                        
-                        <a class="btn btn-danger" href="activity.php?category_id=$category_id&action=delete">Delete<div class="ripple-container"></div></a>
+                        </form>
+                        <form method="post">
+                        <input type="hidden" value="' . $category_id . '" name="categoryid">
+                        <input class="btn btn-danger" type="submit" value="delete" name="add">
+                        </form>
                         </td></tr>
 
-                        </form>';
+                        ';
                         
                         }
                         mysqli_close($conn);

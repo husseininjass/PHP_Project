@@ -1,28 +1,34 @@
 <?php
 session_start();
+
+include "sidenav.php";
+include "topheader.php";
 include("../../user/connect.php");
 error_reporting(0);
-// if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
-// {
-// $product_id=$_GET['product_id'];
-// $sql ="SELECT * FROM products ";
-// $conn->query($sql);
+if (isset($_GET['action']) && $_GET['action'] != "" && $_GET['action'] == 'delete') {
+  $product_id = $_GET['product_id'];
 
-// list($picture)=mysqli_fetch_array($result);
-// $path="../product_images/$picture";
+  
+  $sql = "SELECT photo FROM products WHERE product_id = $product_id";
+  $result = $conn->query($sql);
+  $row = mysqli_fetch_assoc($result);
+  $pic_name = $row['photo'];
 
-// if(file_exists($path)==true)
-// {
-//   unlink($path);
-// }
-// else
-// {}
-/*this is delet query*/
-// $query "DELETE from products where product_id=$product_id";
-// $conn->query($query);
-// }
+  $path = "../product_images/$pic_name";
 
-///pagination
+  if (file_exists($path)) {
+      unlink($path);
+  }
+
+  
+  $query = "DELETE FROM products WHERE product_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("i", $product_id);
+  $stmt->execute();
+  $stmt->close();
+}
+
+// pagination
 
 $page=$_GET['page'];
 
@@ -34,8 +40,7 @@ else
 {
 $page1=($page*10)-10;	
 } 
-include "sidenav.php";
-include "topheader.php";
+
 ?>
       <!-- End Navbar -->
       <div class="content">
@@ -52,19 +57,24 @@ include "topheader.php";
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Name</th><th>Price</th><th>
+                      <tr><th>Image</th><th>Name</th><th>Price</th><th>quantity</th>
 	                      <a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($conn,"SELECT * FROM products")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"SELECT * FROM products");
 
-                        while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
+                        while($row=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../product_images/' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
-                        <td>$price</td>
+                       $image=$row["photo"];
+                       $product_name = $row['product_name'];
+                       $price = $row['price'];
+                       $quantity = $row['quantity'];
+                       $product_id = $row['product_id'];
+                        echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
+                        <td>$price</td><td>$quantity</td>
                         <td>
-                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        <a class=' btn btn-success' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
                         </td></tr>";
                         }
 
