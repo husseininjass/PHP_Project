@@ -8,7 +8,7 @@ error_reporting(0);
 if (isset($_GET['action']) && $_GET['action'] != "" && $_GET['action'] == 'delete') {
   $product_id = $_GET['product_id'];
 
-  // Get the picture name
+  
   $sql = "SELECT photo FROM products WHERE product_id = $product_id";
   $result = $conn->query($sql);
   $row = mysqli_fetch_assoc($result);
@@ -20,7 +20,7 @@ if (isset($_GET['action']) && $_GET['action'] != "" && $_GET['action'] == 'delet
       unlink($path);
   }
 
-  // Delete query with prepared statement
+  
   $query = "DELETE FROM products WHERE product_id = ?";
   $stmt = $conn->prepare($query);
   $stmt->bind_param("i", $product_id);
