@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+.view{
+    border: 2px solid #301362;
+    margin:1%;
+    width:50%;
+    padding:2%;
+    display: flex;
+    justify-content: space-between;
+}
+.edit{
+    border: 2px solid #301362;
+    margin:1%;
+    width:50%;
+    padding:2%;
+}
+.valid {
+    color: rgb(181, 255, 181);
+    /* text-align: center; */
+}
+.valid:before {
+    content: "✔ ";
+    /* text-align: center; */
+}
+.invalid {
+    color: rgb(251, 189, 189);
+    /* text-align: center; */
+}
+.invalid:before {
+    content: "✖ ";
+    /* text-align: center; */
+}

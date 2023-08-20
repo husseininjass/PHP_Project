@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <form action="" method="POST" id="signUpForm">
+        <!-- FirstName -->
+        <input type="text" name="fname" id="fname" placeholder="First Name.." required /><br />
+        <p id="fnameP" class="invalid">
+            <b>letters</b> Only
+        </p>
+        <!-- LastName -->
+        <input type="text" name="lname" id="lname" placeholder="Last Name.." required /><br/>
+        <p id="lnameP" class="invalid">
+            <b>letters</b> Only
+        </p>
+        <!-- Email -->
+        <input type="email" name="email" id="email" placeholder="Email.." required /><br/>
+        <p id="emailP" class="invalid">
+            <b>example@mail.com</b>
+        </p>
+        <!-- Mobile -->
+        <input type="number" name="mobile" id="mobile" placeholder="Mobile-10 Digit" required /><br/>
+        <p id="mobileNumP" class="invalid">
+            Ex:(0777777777)
+        </p>
+        <!-- Password -->
+        <input type="password" name="password" id="password" placeholder="Password.." /><br/>
+        <p id="numberPass" class="invalid" >
+            <b>Number</b>
+        </p>
+        <p id="spacePass" class="valid" >
+            <b>No Space</b>
+        </p>
+        
+        <p id="capitalPass" class="invalid" >
+            <b>Uppercase</b> letter
+        </p>
+        <p id="letterPass" class="invalid" >
+            <b>Lowercase</b> letter
+        </p>
+        <p id="lengthPass" class="invalid" >
+            <b>(8-32) characters</b>
+        </p>
+        <p id="spChPass" class="invalid" >
+            <b>Special Characters</b>
+        </p>
+        <!-- Confirm Password -->
+        <input type="password" name="confPassword" id="confPassword" placeholder="Confirm Password.." required/><br/>
+        <p id="confPassP" class="invalid">
+            <b>Must Match with Password</b>
+        </p>
+        <!-- City -->
+        <select id="city">
+            <option  selected disabled>City</option>
+            <option value="Amman">Amman</option>
+            <option value="Ajloun">Ajloun</option>
+            <option value="Aqaba">Aqaba</option>
+            <option value="Balqa">Balqa</option>
+            <option value="Irbid">Irbid</option>
+            <option value="Jerash">Jerash</option>
+            <option value="Karak">Karak</option>
+            <option value="Ma'an">Ma'an</option>
+            <option value="Madaba">Madaba</option>
+            <option value="Mafraq">Mafraq</option>
+            <option value="Tafilah">Tafilah</option>
+            <option value="Zarqa">Zarqa</option>
+        </select>
+        <p id="cityP" class="invalid">Select City</p>
+        <br/>
+        <!-- Address -->
+        <textarea id="addressText" rows="5" placeholder="Address.."></textarea><br/>
+        <input type="submit" id="submitBtn" name="submit" value="Sign Up"/><br/>
+        <p style="display: block; color: white; ">Already have an Account? <a href='./login.php' style="text-decoration: none; color: rgb(199, 199, 221); font-weight: bolder;" >SignIn</a></p>
+        <p id="notValidP" style="color: white;"></p>
+    </form>
+    <script src="./signup.js"></script>
+</body>
+</html>
