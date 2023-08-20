@@ -7,7 +7,8 @@ $response=array();
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     // $data=json_decode(file_get_contents("php://input"),true);
-    $sql ="select `cart`.product_id , `cart`.conte , `products`.product_name , `products`.price , `products`.`photo` FROM `products` JOIN `cart` ON `cart`.`product_id`=`products`.`product_id` AND `cart`.`user_id`='$id'";
+    $sql ="select `cart`.product_id , `cart`.conte , `products`.product_name , `products`.price , `products`.`photo` FROM `products` JOIN `cart` ON `cart`.`product_id`=`products`.`product_id` AND `cart`.`user_id`='$id' AND `cart`.`is_ordered`=0";
+
     $result = $conn->query($sql);
     // $row=mysqli_fetch_assoc($result);
     foreach ($result as $row) {
