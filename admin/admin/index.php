@@ -13,7 +13,7 @@ include "activitity.php";
         <div class="container-fluid">
          <div class="panel-body">
 		<a>
-            <?php  //success message
+            <?php  
             if(isset($_POST['success'])) {
             $success = $_POST["success"];
             echo "<div class='col-md-12 col-xs-12' id='product_msg'>
@@ -38,7 +38,7 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($conn,"select * from user_info")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from users")or die ("query 1 incorrect.....");
 
                         while(list($user_id,$first_name,$last_name,$email,$password,$phone,$address1,$address2)=mysqli_fetch_array($result))
                         {	
@@ -53,7 +53,7 @@ include "activitity.php";
               </div>
             </div>
           </div>
-           <div class="row">
+           <!-- <div class="row">
             <div class="col-md-6">
             <div class="card ">
               <div class="card-header card-header-primary">
@@ -67,7 +67,7 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($conn,"select * from categories")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"select * from categores")or die ("query 1 incorrect.....");
                         $i=1;
                         while(list($cat_id,$cat_title)=mysqli_fetch_array($result))
                         {	
@@ -86,8 +86,8 @@ include "activitity.php";
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
               </div>
             </div>
-          </div>
-          <div class="col-md-6">
+          </div> -->
+          <!-- <div class="col-md-6">
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">Brands List</h4>
@@ -120,7 +120,7 @@ include "activitity.php";
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
               </div>
             </div>
-          </div>
+          </div> -->
            </div>
            <div class="col-md-5">
             <div class="card ">
@@ -135,7 +135,9 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($conn,"select * from email_info")or die ("query 1 incorrect.....");
+                      $sql = "SELECT * FROM users";
+                      $result = $conn->query($sql);
+                        // $result=mysqli_query($conn,$sql)or die ("query 1 incorrect.....");
 
                         while(list($brand_id,$brand_title)=mysqli_fetch_array($result))
                         {	

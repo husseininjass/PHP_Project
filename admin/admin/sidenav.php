@@ -77,9 +77,9 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-            <a class="nav-link" href="activity.php">
+            <a class="nav-link" href="categores.php">
               <i class="material-icons">timeline</i>
-              <p>Activities</p>
+              <p>categores</p>
             </a>
           </li>
                    
