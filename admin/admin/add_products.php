@@ -21,6 +21,7 @@ if(isset($_POST['btn_save']))
         if($picture_size <= 50000000)
         {
             $pic_name = time() . "_" . $picture_name;
+            $_SESSION['image'] = $pic_name;
             move_uploaded_file($picture_tmp_name, "../product_images/" . $pic_name);
             $sql = "INSERT INTO products (category_id , product_name , price, quantity , description , photo) VALUES('$product_type' , '$product_name' , '$price' , '$quantity' , '$details' , '$pic_name')";
             if($conn->query($sql) === true){

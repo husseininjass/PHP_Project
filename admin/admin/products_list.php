@@ -2,25 +2,25 @@
 session_start();
 include("../../user/connect.php");
 error_reporting(0);
-if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
-{
-$product_id=$_GET['product_id'];
-$sql ="SELECT * FROM products ";
-$conn->query($sql);
+// if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
+// {
+// $product_id=$_GET['product_id'];
+// $sql ="SELECT * FROM products ";
+// $conn->query($sql);
 
-list($picture)=mysqli_fetch_array($result);
-$path="../product_images/$picture";
+// list($picture)=mysqli_fetch_array($result);
+// $path="../product_images/$picture";
 
-if(file_exists($path)==true)
-{
-  unlink($path);
-}
-else
-{}
+// if(file_exists($path)==true)
+// {
+//   unlink($path);
+// }
+// else
+// {}
 /*this is delet query*/
 // $query "DELETE from products where product_id=$product_id";
 // $conn->query($query);
-}
+// }
 
 ///pagination
 
@@ -61,7 +61,7 @@ include "topheader.php";
 
                         while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../product_images/$pic_name' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
+                        echo "<tr><td><img src='../product_images/' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
                         <td>$price</td>
                         <td>
                         <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
