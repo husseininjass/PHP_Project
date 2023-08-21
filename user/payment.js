@@ -39,27 +39,30 @@ fetch("viewCart.php",{
         // console.log(element);
         let item = document.createElement('div');
         let product_id = document.createElement('p');
-        let product_photo = document.createElement('p');
-        let photo=document.createElement('img');
+        // let product_photo = document.createElement('p');
+        // let photo=document.createElement('img');
         let product_name = document.createElement('p');
         let product_count = document.createElement('p');
         let product_price = document.createElement('p');
-
+        let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
+        product_price.textContent=sale;
+        
         product_id.textContent=element['product_id'];
         product_id.style.display='none';
-        photo.setAttribute('src',element['photo']);
-        photo.setAttribute('alt',"photo");
-        photo.style.height='50px';
-        product_photo.appendChild(photo);
+        // photo.setAttribute('src',element['photo']);
+        // photo.setAttribute('alt',"photo");
+        // photo.style.height='50px';
+        // product_photo.appendChild(photo);
         product_name.textContent=element['product_name'];
         product_count.textContent="Count: " + element['conte'];
-        product_price.textContent="Price: " + element['price']*element['conte'];
-
+        // product_price.textContent="Price: " + element['price']*element['conte'];
+        
         item.appendChild(product_id);
-        item.appendChild(product_photo);
+        // item.appendChild(product_photo);
         item.appendChild(product_name);
         item.appendChild(product_count);
         item.appendChild(product_price);
+        // item.appendChild(product_price);
         document.getElementById('cartInfo').appendChild(item);
         document.getElementById('cartInfo').style.width='70%';
         document.getElementById('cartInfo').style.margin='0 auto'
@@ -69,7 +72,7 @@ fetch("viewCart.php",{
         item.style.margin='0 auto';
         item.style.border='2px solid black';
         item.style.marginBottom='1%';
-        total+=element['price']*element['conte'];
+        total+=sale;
         document.getElementById('totalSpan').textContent="Total Price: \n " + total + " JOD";
     })
 })
@@ -110,7 +113,7 @@ document.getElementById('orderBtn').addEventListener('click',function(){
                     }),
                 })
                 .then(response=>response.json())
-                .then(data=>{
+                .then(elem=>{
                 })
                 .catch(error=>{
                     alert("Error:",error);
@@ -124,7 +127,7 @@ document.getElementById('orderBtn').addEventListener('click',function(){
     .catch(error=>{
       alert("Error:",error);
     })
-
+    let sale=0;
     //add order in orders table
     let is_ready=localStorage.getItem('is_ready');
     if(is_ready){
@@ -139,28 +142,50 @@ document.getElementById('orderBtn').addEventListener('click',function(){
             })
             .then(response=>response.json())
             .then(data=>{
-                // console.log(data['id']);
+                console.log(data['id']);
 
-                //update is_ordered and order_id in cart
-                fetch("updateCart.php",{
+                // get price 
+                fetch("viewCart.php",{
                     method: "POST",
                     headers:{
                         "Content-Type":"application/json",
                     },
-                    body:JSON.stringify({ 
-                        order_id:data['id'],
-
-                    }),
+                    body:JSON.stringify({
+                }),
                 })
                 .then(response=>response.json())
-                .then(data=>{
-                    console.log(data);
-                    
-                    
+                .then(elem=>{
+                    // console.log(elem['product_id']);
+                    elem.map(element=>{
+                        //update is_ordered , order_id and price in cart
+                        sale= ((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
+                        // console.log(((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte']);
+                        fetch("updateCart.php",{
+                            method: "POST",
+                            headers:{
+                                "Content-Type":"application/json",
+                            },
+                            body:JSON.stringify({ 
+                                order_id:data['id'],
+                                price:sale,
+                                product_id:element['product_id'],
+                            }),
+                        })
+                        .then(response=>response.json())
+                        .then(data=>{
+                            console.log(data);
+                            
+                            
+                        })
+                        .catch(error=>{
+                            alert("Error:",error);
+                        })
+                    })
                 })
                 .catch(error=>{
                     alert("Error:",error);
                 })
+                
                 
             })
             .catch(error=>{
@@ -168,3 +193,48 @@ document.getElementById('orderBtn').addEventListener('click',function(){
             })
     }
 })
+
+// fetch("viewCart.php",{
+//     method: "POST",
+//     headers:{
+//         "Content-Type":"application/json",
+//     },
+//     body:JSON.stringify({
+// }),
+// })
+// .then(response=>response.json())
+// .then(data=>{
+//     data.map(element=>{
+//         let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
+//         fetch("updateCart.php",{
+//             method: "POST",
+//             headers:{
+//                 "Content-Type":"application/json",
+//             },
+//             body:JSON.stringify({ 
+//                 order_id:data['id'],
+//                 price:sale
+
+//             }),
+//         })
+//         .then(response=>response.json())
+//         .then(data=>{
+//             console.log(data);
+            
+            
+//         })
+//         .catch(error=>{
+//             alert("Error:",error);
+//         })
+//     })
+// })
+// .catch(error=>{
+//     alert("Error:",error);
+// })
+
+
+// })
+// .catch(error=>{
+// alert("Error:",error);
+// })
+// }

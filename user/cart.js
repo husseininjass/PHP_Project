@@ -23,16 +23,8 @@ fetch("viewCart.php",{
         let sub_one=document.createElement('span');
         let delete_item=document.createElement('span');
         let product_price = document.createElement('td');
-        if((+element['sale'])!=0){
-            
-            let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
-            product_price.textContent=sale;
-            item.appendChild(product_price);
-        }else{
-            product_price.textContent=element['price']*element['conte'];
-            item.appendChild(product_price);
-        }
-
+        let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
+        product_price.textContent=sale;
         product_id.textContent=element['product_id'];
         photo.setAttribute('src',element['photo']);
         photo.setAttribute('alt',"photo");
@@ -53,20 +45,21 @@ fetch("viewCart.php",{
         countP.appendChild(sub_one);
         countP.appendChild(delete_item);
         product_count.appendChild(countP);
-
+        
         product_id.style.display='none';
-
-
+        
+        
         item.appendChild(product_id);
         item.appendChild(product_photo);
         item.appendChild(product_name);
         item.appendChild(product_count);
+        item.appendChild(product_price);
         // item.appendChild(product_price);
         
         // item.style.display='flex';
         // item.style.justifyContent='space-between';
         document.getElementById("table").appendChild(item);
-        total+=element['price']*element['conte'];
+        total+=sale;
         document.getElementById('totalPrice').textContent="Total Price: \n " + total + " JOD";
 
         
