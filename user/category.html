@@ -4,17 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="stylesheet" href="category.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a11421cbe7.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <form  method="post">
-            
-                <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i>
+        <header>
+            <div class="navbar navbar-expand-md navbar-dark fixed-top">
+                <div class="container">
+                    <span class="logo">POWERPCMALL</span>
+          
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
+                        <span class="navbar-toggler-icon bg-dark"></span>
+                    </button>
+          
+                    <div class="collapse navbar-collapse" id="mainmenu">
+                        <ul class="navbar-nav ms-auto navo">
+                            <li class="nav-item sign-in" id="homebtn">
+                                <a href="../index.html" class="nav-link ">Home</a>
+                            </li>
+                            <li class="nav-item" id="home">
+                                <select name="" id="categoryselect" >
+                                    <option value="" selected disabled>Category</option>
+                            
+                                </select>
+                            </li>
+                            <li class="nav-item sign-in" id="loginLi">
+                                <a href="./login.html" class="nav-link ">Login</a>
+                            </li>
+                            <li class="nav-item sign-up" id="signupLi">
+                                <a href="./signup.html" class="nav-link ">Sign up</a>
+                            </li>
+                          <!-- <li class="nav-item sign-up">
+                              <a href="Registration page/index.html" class="nav-link "><i class="fa-solid fa-cart-shopping"></i></a>
+                          </li> -->
+                          <!-- <li class="nav-item sign-up">
+                            <a href="#" class="nav-link "><i class="fa-regular fa-user"></i></a>
+                        </li> -->
+                        <!-- <li class="nav-item sign-up">
+                            <a href="./profile.html" class="nav-link ">
+                                <i id="profileIcon"class="fa-regular fa-user"></i>
+                            </a>
+                        </li>  -->
+                            <li>
+                                <i id="profileIcon" class="fa-solid fa-user fa-lg" ></i>
+                            </li>
+                            <li>
+                                <i id="cartIcon" class="fa-solid fa-cart-shopping fa-lg" onclick="checkUser()"></i>
+                            </li>
+                            <li>
+                                <i id="logoutIcon" class="fa-solid fa-right-from-bracket fa-lg" onclick="logout()"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+           </div>
+        </header>       
+                <!-- <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i> -->
 
             
         
-            <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i>
+            <!-- <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i> -->
        
         <div id="productCard" style="border: 1px solid black; display: flex; flex-wrap: wrap; justify-content: center;">
         
