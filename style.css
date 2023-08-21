@@ -5,6 +5,9 @@
     /* font-family: fantasy; */
     text-decoration: none;
 }
+body{
+    background-color: #ddd;
+}
 header{
     margin-bottom: 3.5rem;
 }
@@ -151,7 +154,19 @@ section .container{
 }
 .cards{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 2rem;
+    margin-bottom: 3rem;
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #000000;
+}
+footer p , h6{
+    color: white;
+}
+h6{
+    font-weight: bold;
 }
