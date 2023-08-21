@@ -1,4 +1,28 @@
 let category=localStorage.getItem('category_id');
+fetch('checkLogin.php',{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+}),
+})
+.then(response=>response.json())
+.then(data=>{
+    if(data == false){
+        document.getElementById('profileIcon').style.display='none';
+        document.getElementById('cartIcon').style.display='none';
+        document.getElementById('logoutIcon').style.display='none';
+
+    }else{
+        document.getElementById('loginLi').style.display='none';
+        document.getElementById('signupLi').style.display='none';
+        
+    }
+})
+.catch(error=>{
+    alert("Error:",error);
+})
 
 fetch("category.php",{
     method: "POST",
@@ -138,4 +162,22 @@ function addToCart(product_id){
 function productNameClick(product_id){
     localStorage.setItem('product_id',product_id);
 
+}
+function logout(){
+    fetch('logout.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        // console.log(data);
+        window.location.href=('../index2.html');
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
 }
