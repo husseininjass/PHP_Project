@@ -13,7 +13,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     // $row=mysqli_fetch_assoc($result);
     foreach ($result as $row) {
         $response[]=$row;
-        
     }
 
     echo json_encode($response);
