@@ -44,36 +44,36 @@ function fetchCcategory(){
 fetchCcategory();
 
 //cart and profile
-// let selectCategory=document.getElementById('category');
+let selectCategory=document.getElementById('category');
 
-// selectCategory.addEventListener('change',function(){
+selectCategory.addEventListener('change',function(){
     
-// })
-// document.getElementById('profileIcon').addEventListener('click',function(){
-//     fetch('checkLogin.php',{
-//         method: "POST",
-//         headers:{
-//             "Content-Type":"application/json",
-//         },
-//         body:JSON.stringify({
-//     }),
-//     })
-//     .then(response=>response.json())
-//     .then(data=>{
-//         if(data == false){
-//             window.location.href=('./login.html');
-//         }else{
-//                 window.location.href=('./profile.html');
-//         }
-//     })
-//     .catch(error=>{
-//         alert("Error:",error);
-//     })
+})
+document.getElementById('profileIcon').addEventListener('click',function(){
+    fetch('./user/checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./user/login.html');
+        }else{
+                window.location.href=('./user/profile.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
 
-// })
+})
 
 function checkUser(){
-  fetch('user/checkLogin.php',{
+  fetch('./user/checkLogin.php',{
       method: "POST",
       headers:{
           "Content-Type":"application/json",
@@ -84,9 +84,9 @@ function checkUser(){
   .then(response=>response.json())
   .then(data=>{
       if(data == false){
-          window.location.href=('user/login.html');
+          window.location.href=('./user/login.html');
       }else{
-              window.location.href=('user/cart.html');
+              window.location.href=('./user/cart.html');
       }
   })
   .catch(error=>{
@@ -94,7 +94,7 @@ function checkUser(){
   })
 
 }
-checkUser();
+
 
 
 

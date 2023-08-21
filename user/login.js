@@ -16,7 +16,7 @@ btn.addEventListener("click",function(event){
     .then(response=>response.json())
     .then(data=>{
         if(data['message']=="success"){
-            window.location.href='./home.html';
+            window.location.href='../index2.html';
         }else{
             document.getElementById("invalidP").style.display='block';
             document.getElementById("invalidP").classList.add("invalid");
