@@ -445,7 +445,7 @@ btn.addEventListener("click",function(event){
                 city.value="city";
                 address.value="";
                 firstNameFlag=lastNameFlag=emailFlag=mobileFlag=passwordFlag=confPasswordFlag=cityFlag=addressFlag=0;
-                window.location.href='./login.php';
+                window.location.href='./login.html';
             }
         })
         .catch(error=>{
