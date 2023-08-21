@@ -135,7 +135,7 @@ $page1=($page*10)-10;
                         echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_id</td><td>$product_name</td>
                         <td>$price</td><td>$sale</td><td>$quantity</td>
                         <td>
-                        <a class=' btn btn-success' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        <a class=' btn btn-danger' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
                         
                         <form method='post'>
                         <input type='hidden' value=' " . $product_id . "' name='product_id'>
