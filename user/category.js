@@ -47,8 +47,10 @@ fetch("category.php",{
         let priceSpan=document.createElement('span');
         let cartP=document.createElement('input');
         img.setAttribute('src',"../admin/product_images/"+ element['photo']);
-        img.style.height='100px';
+        img.style.height='200px';
         imgDiv.appendChild(img);
+        imgDiv.style.textAlign='center';
+        imgDiv.style.marginBottom='10%';
         detailsDiv.appendChild(imgDiv);
         nameA.textContent=element['product_name'];
         nameA.setAttribute('href',"./product.html");
@@ -65,10 +67,12 @@ fetch("category.php",{
             priceDiv.appendChild(saleSpan);
         }
         cartP.setAttribute('type','button');
+        cartP.setAttribute('class','btn btn-primary');
         cartP.setAttribute('value','Add To Cart');
         cartP.setAttribute('onclick',"addToCart(" + element['product_id'] + ")");
         detailsDiv.style.width='30%';
         detailsDiv.style.border='1px solid black';
+        detailsDiv.style.padding='1%';
         detailsDiv.appendChild(nameP);
         detailsDiv.appendChild(priceDiv);
         detailsDiv.appendChild(cartP);

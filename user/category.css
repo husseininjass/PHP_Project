@@ -44,6 +44,11 @@ i{
     margin-top: 8%;
 }
 
+/* .addCartBtn{
+    padding:2%;
+    background-color: rgb(30, 30, 74);
+    color:white;
+} */
 @media(min-width: 280px) and (max-width: 1800px){
     .container{
         max-width: 100% !important;
