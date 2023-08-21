@@ -34,7 +34,7 @@ function fetchCcategory(){
     console.log(data);
     data.forEach(function(e , index){
       category.innerHTML += `
-      <a href="#"><option value="${data[index].category_id}">${data[index].name}</option></a>
+      <a href="user/category.html"><option value="${data[index].category_id}">${data[index].name}</option></a>
         
       `
     })

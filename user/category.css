@@ -25,7 +25,7 @@ li{
 .logo{
     color: white;
 }
-a{
+li{
     color: white !important;
     text-decoration: none;
     
@@ -39,6 +39,9 @@ a{
 i{
     /* background-color: white; */
     color: white;
+}
+#productCard{
+    margin-top: 8%;
 }
 
 @media(min-width: 280px) and (max-width: 1800px){
