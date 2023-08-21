@@ -93,7 +93,7 @@ include "topheader.php";
                     <tbody>
                       <?php 
                         $result=mysqli_query($conn,"select category_id,name from categores")or die ("query 2 incorrect.......");
-
+                        
                         while(list($category_id,$name)=
                         mysqli_fetch_array($result))
                         {
@@ -117,6 +117,7 @@ include "topheader.php";
                         ';
                         
                         }
+                        
                         mysqli_close($conn);
                         ?>
                     </tbody>
