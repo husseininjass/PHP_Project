@@ -11,11 +11,12 @@
     <script src="https://kit.fontawesome.com/a342f74175.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <form method="post">
     <header>
         <div class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
               <span class="logo">POWERPCMALL</span>
-
+      
               <button
                 class="navbar-toggler"
                 type="button"
@@ -24,41 +25,43 @@
               >
               <span class="navbar-toggler-icon bg-dark"></span>
               </button>
-
+      
               <div class="collapse navbar-collapse" id="mainmenu">
                   <ul class="navbar-nav ms-auto navo">
                       <li class="nav-item" id="home"><select name="" id="category" >
-                        <a href="#"><option value="" selected>Category</option></a>
-
+                        <option value="" selected>Category</option>
+                        
                       </select></li>
                       <li class="nav-item sign-in">
-                          <a href="Login Page/index.html" class="nav-link ">Log in</a>
+                          <a href="user/login.html" class="nav-link ">Log in</a>
                       </li>
                       <li class="nav-item sign-up">
-                          <a href="Registration page/index.html" class="nav-link ">Sign up</a>
+                          <a href="user/signup.html" class="nav-link ">Sign up</a>
                       </li>
-                      <li class="nav-item sign-up">
-                            <a href="./cart.html" class="nav-link ">
-                                <i id="profileIcon" class="fa-solid fa-cart-shopping"></i>
-                            </a>
-                      </li>
-                      <li class="nav-item sign-up">
-                            <a href="./profile.html" class="nav-link ">
-                                <i id="profileIcon"class="fa-regular fa-user"></i>
-                            </a>
-                        </li> 
-                        <li>
-                            <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i>
-                    </li>
+                      <!-- <li class="nav-item sign-up">
+                          <a href="Registration page/index.html" class="nav-link "><i class="fa-solid fa-cart-shopping"></i></a>
+                      </li> -->
+                      <!-- <li class="nav-item sign-up">
+                        <a href="#" class="nav-link "><i class="fa-regular fa-user"></i></a>
+                    </li> -->
+                    <!-- <li class="nav-item sign-up">
+                        <a href="./profile.html" class="nav-link ">
+                            <i id="profileIcon"class="fa-regular fa-user"></i>
+                        </a>
+                    </li>  -->
                     <li>
- 
-                         <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i>
-                    </li>
+                        <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i>
+                </li>
+                <li>
+
+                     <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i>
+                </li>
                   </ul>
               </div>
             </div>
           </div>
     </header>
+    </form>
     <section class="section1">
         <div class="container">
         
