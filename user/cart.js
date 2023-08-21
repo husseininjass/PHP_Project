@@ -23,7 +23,15 @@ fetch("viewCart.php",{
         let sub_one=document.createElement('span');
         let delete_item=document.createElement('span');
         let product_price = document.createElement('td');
-
+        if((+element['sale'])!=0){
+            
+            let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
+            product_price.textContent=sale;
+            item.appendChild(product_price);
+        }else{
+            product_price.textContent=element['price']*element['conte'];
+            item.appendChild(product_price);
+        }
 
         product_id.textContent=element['product_id'];
         photo.setAttribute('src',element['photo']);
@@ -45,7 +53,6 @@ fetch("viewCart.php",{
         countP.appendChild(sub_one);
         countP.appendChild(delete_item);
         product_count.appendChild(countP);
-        product_price.textContent=element['price']*element['conte'];
 
         product_id.style.display='none';
 
@@ -54,7 +61,7 @@ fetch("viewCart.php",{
         item.appendChild(product_photo);
         item.appendChild(product_name);
         item.appendChild(product_count);
-        item.appendChild(product_price);
+        // item.appendChild(product_price);
         
         // item.style.display='flex';
         // item.style.justifyContent='space-between';

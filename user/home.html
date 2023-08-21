@@ -11,78 +11,22 @@
     <script src="https://kit.fontawesome.com/a342f74175.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div class="navbar navbar-expand-md navbar-dark fixed-top">
-            <div class="container">
-              <span class="logo">POWERPCMALL</span>
-
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainmenu"
-              >
-              <span class="navbar-toggler-icon bg-dark"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="mainmenu">
-                  <ul class="navbar-nav ms-auto navo">
-                      <li class="nav-item" id="home"><select name="" id="category" >
-                        <a href="#"><option value="" selected>Category</option></a>
-
-                      </select></li>
-                      <li class="nav-item sign-in">
-                          <a href="Login Page/index.html" class="nav-link ">Log in</a>
-                      </li>
-                      <li class="nav-item sign-up">
-                          <a href="Registration page/index.html" class="nav-link ">Sign up</a>
-                      </li>
-                      <li class="nav-item sign-up">
-                            <a href="./cart.html" class="nav-link ">
-                                <i id="profileIcon" class="fa-solid fa-cart-shopping"></i>
-                            </a>
-                      </li>
-                      <li class="nav-item sign-up">
-                            <a href="./profile.html" class="nav-link ">
-                                <i id="profileIcon"class="fa-regular fa-user"></i>
-                            </a>
-                        </li> 
-                        <li>
-                            <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i>
-                    </li>
-                    <li>
- 
-                         <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-          </div>
-    </header>
-    <section class="section1">
-        <div class="container">
-        
-        <div class="swiper">
-   
-            <div class="swiper-wrapper">
-        
-            <div class="swiper-slide"><img src="cpu.jpg" alt="itachi" ></div>
-            <div class="swiper-slide"><img src="gc.jpg" alt="itachi" ></div>
-            <div class="swiper-slide"><img src="mr.jpg" alt="itchi" ></div>
-            <div class="swiper-slide"><img src="rtx8090.jpg" alt="itchi" ></div>
-            
-            </div>
-          
-            <div class="swiper-pagination"></div>
-        
-            </div>
-        </div>
-    </section>
-    
-    <section class="company">
-        <div><img src="om78-removebg-preview_1.png" alt=""></div>
-        <div><p class="brief">POWERPCMALL An online store </p><p>specialized in selling computer hardwars and computers.</p></div>
-    </section>
+    <form method="post">
+        <a href="./profile.html" style="text-decoration: none;">
+            <i id="profileIcon" class="fa-solid fa-user fa-xl"></i>
+        </a>
+        <a href="./cart.html" style="text-decoration: none;">
+            <i class="fa-solid fa-cart-shopping fa-xl"></i>
+        </a>
+        <select id="categorySelect" >
+            <option value="category" selected disabled>Category</option>
+            <option value="1">GPU</option>
+            <option value="2">CPU</option>
+            <option value="3">Motherboard</option>
+            <option value="4">RAM</option>
+        </select>
+    </form>
+    <script src="./home.js"></script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
