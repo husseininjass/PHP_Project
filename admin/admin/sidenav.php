@@ -92,7 +92,7 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="salesofday.php">
                             <i class="material-icons">library_books</i>
-                            <p>sales</p>
+                            <p>Orders</p>
                         </a>
                     </li>
 

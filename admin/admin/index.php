@@ -34,7 +34,7 @@ include "activitity.php";
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                        <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Email</th><th>Password</th><th>Contact</th><th>Address</th><th>City</th>
+                        <tr><th>ID</th><th>FirstName</th><th>LastName</th><th>Email</th><th>Password</th><th>Address</th><th>Contact</th><th>City</th>
                     </tr></thead>
                     <tbody>
                       <?php 
@@ -67,19 +67,19 @@ include "activitity.php";
                     </tr></thead>
                     <tbody>
                       <?php 
-                        $result=mysqli_query($conn,"select * from categores")or die ("query 1 incorrect.....");
-                        $i=1;
-                        while(list($cat_id,$cat_title)=mysqli_fetch_array($result))
-                        {	
-                            $sql = "SELECT COUNT(*) AS count_items FROM products WHERE product_cat=$i";
-                            $query = mysqli_query($conn,$sql);
-                            $row = mysqli_fetch_array($query);
-                            $count=$row["count_items"];
-                            $i++;
-                        echo "<tr><td>$cat_id</td><td>$cat_title</td><td>$count</td>
+                        // $result=mysqli_query($conn,"select * from categores")or die ("query 1 incorrect.....");
+                        // $i=1;
+                        // while(list($cat_id,$cat_title)=mysqli_fetch_array($result))
+                        // {	
+                        //     $sql = "SELECT COUNT(*) AS count_items FROM products WHERE product_cat=$i";
+                        //     $query = mysqli_query($conn,$sql);
+                        //     $row = mysqli_fetch_array($query);
+                        //     $count=$row["count_items"];
+                        //     $i++;
+                        // echo "<tr><td>$cat_id</td><td>$cat_title</td><td>$count</td>
 
-                        </tr>";
-                        }
+                        // </tr>";
+                        // }
                         ?>
                     </tbody>
                   </table>
