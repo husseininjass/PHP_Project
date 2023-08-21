@@ -65,7 +65,7 @@ document.getElementById('profileIcon').addEventListener('click',function(){
           if(data == false){
               window.location.href=('./login.html');
           }else{
-                  window.open=('./profile.html');
+                  window.location.href=('./profile.html');
           }
       })
       .catch(error=>{
@@ -88,7 +88,7 @@ function checkUser(){
         if(data == false){
             window.location.href=('./login.html');
         }else{
-                window.open=('./cart.html');
+                window.location.href=('./cart.html');
         }
     })
     .catch(error=>{
