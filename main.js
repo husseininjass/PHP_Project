@@ -20,28 +20,34 @@ const swiper = new Swiper('.swiper', {
   });
 
 //start the fetch job from here till we end 
-
 let category = document.querySelector('#category');
-function fetchCcategory(){
-  fetch('admin/admin/cata.php' , {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(" "),
 
+function fetchCategory() {
+  fetch('admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
   })
   .then(r => r.json())
-  .then(function(data){
-    console.log(data);
-    data.forEach(function(e , index){
-      category.innerHTML += `
-      <a href="user/category.html"><option value="${data[index].category_id}">${data[index].name}</option></a>
-        
-      `
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      category.appendChild(option)
     })
-    
-  });
+  })
 }
-fetchCcategory();
+fetchCategory();
+
+category.addEventListener("change", function() {
+  const selected = category.value
+  if (selected) {
+    window.location.href = "user/category.html"
+  }
+})
+
+
 
 //cart and profile
 let selectCategory=document.getElementById('category');
@@ -94,7 +100,4 @@ function checkUser(){
   })
 
 }
-
-
-
 
