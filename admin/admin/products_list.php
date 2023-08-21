@@ -2,25 +2,25 @@
 session_start();
 include("../../user/connect.php");
 error_reporting(0);
-if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
-{
-$product_id=$_GET['product_id'];
-///////picture delete/////////
-$result=mysqli_query($con,"select product_image from products where product_id='$product_id'")
-or die("query is incorrect...");
+// if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
+// {
+// $product_id=$_GET['product_id'];
+// $sql ="SELECT * FROM products ";
+// $conn->query($sql);
 
-list($picture)=mysqli_fetch_array($result);
-$path="../product_images/$picture";
+// list($picture)=mysqli_fetch_array($result);
+// $path="../product_images/$picture";
 
-if(file_exists($path)==true)
-{
-  unlink($path);
-}
-else
-{}
+// if(file_exists($path)==true)
+// {
+//   unlink($path);
+// }
+// else
+// {}
 /*this is delet query*/
-mysqli_query($con,"delete from products where product_id='$product_id'")or die("query is incorrect...");
-}
+// $query "DELETE from products where product_id=$product_id";
+// $conn->query($query);
+// }
 
 ///pagination
 
@@ -53,15 +53,15 @@ include "topheader.php";
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
                       <tr><th>Image</th><th>Name</th><th>Price</th><th>
-	<a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
+	                      <a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($con,"select product_id,product_image, product_title,product_price from products  where  product_cat=2 or product_cat=3 or product_cat=4 Limit $page1,12")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"SELECT * FROM products")or die ("query 1 incorrect.....");
 
                         while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
+                        echo "<tr><td><img src='../product_images/' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
                         <td>$price</td>
                         <td>
                         <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
@@ -78,14 +78,14 @@ include "topheader.php";
               <ul class="pagination">
                 <li class="page-item">
                   <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
+                    <!-- <span aria-hidden="true">&laquo;</span> -->
                     <span class="sr-only">Previous</span>
                   </a>
                 </li>
                  <?php 
 //counting paging
 
-                $paging=mysqli_query($con,"select product_id,product_image, product_title,product_price from products");
+                $paging=mysqli_query($conn,"select product_id,product_image, product_title,product_price from products");
                 $count=mysqli_num_rows($paging);
 
                 $a=$count/10;
