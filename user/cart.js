@@ -1,3 +1,4 @@
+let total=0;
 fetch("viewCart.php",{
     method: "POST",
     headers:{
@@ -46,6 +47,7 @@ fetch("viewCart.php",{
         product_count.appendChild(countP);
         product_price.textContent=element['price']*element['conte'];
 
+        product_id.style.display='none';
 
 
         item.appendChild(product_id);
@@ -54,9 +56,11 @@ fetch("viewCart.php",{
         item.appendChild(product_count);
         item.appendChild(product_price);
         
-        item.style.display='flex';
-        item.style.justifyContent='space-between';
+        // item.style.display='flex';
+        // item.style.justifyContent='space-between';
         document.getElementById("table").appendChild(item);
+        total+=element['price']*element['conte'];
+        document.getElementById('totalPrice').textContent="Total Price: \n " + total + " JOD";
 
         
     })
@@ -103,21 +107,7 @@ function subOneCount(id,count) {
             window.location.href=("./cart.html");
         })
     }else{
-        fetch("deleteProductCart.php",{
-            method: "POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body:JSON.stringify({
-                product_id:id,
-                edit:1,
-        }),
-        })
-        .then(response=>response.json())
-        .then(data=>{
-            console.log(data['message']);
-            window.location.href=("./cart.html");
-        })
+        
     }
     
 }
@@ -162,4 +152,8 @@ document.getElementById('yesBtn').addEventListener('click', function(){
         console.log(data['message']);
         window.location.href=("./cart.html");
     })
+})
+
+document.getElementById("chkbtn").addEventListener('click',function(){
+    window.location.href=('./payment.html');
 })

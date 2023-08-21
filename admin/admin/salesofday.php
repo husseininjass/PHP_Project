@@ -23,7 +23,21 @@ else
 {
 $page1=($page*10)-10; 
 }
+// $alterSql = "ALTER TABLE cart ADD CONSTRAINT unique_product_id UNIQUE (product_id)";
+// if ($conn->query($alterSql) === TRUE) {
+//     echo "Unique constraint added successfully.<br>";
+// } else {
+//     echo "Error adding unique constraint: " . $conn->error . "<br>";
+// }
 
+
+$sql = "SELECT cart.order_id, cart.user_id, products.product_name, cart.conte,orders.status ,orders.date_time
+        FROM cart
+        INNER JOIN products ON products.product_id = cart.product_id
+        INNER JOIN orders on orders.order_id = cart.order_id";
+        
+
+$result = $conn->query($sql);
 include "sidenav.php";
 include "topheader.php";
 
@@ -35,59 +49,36 @@ include "topheader.php";
           <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">sales / Page <?php echo $page;?> </h4>
+                <h4 class="card-title">Orders List<?php echo $page;?> </h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
                   <table class="table table-hover tablesorter " id="">
                     <thead class=" text-primary">
-                      <tr><th>order_id</th><th>Products</th><th>Contact | Email</th><th>Address</th><th>amount</th><th>Quantity</th>
+                      <tr><th>order_id</th><th>User Id</th><th>Product Name</th><th>Count</th><th>Date Time</th><th>Status</th>
                     </tr></thead>
                     <tbody>
-                      <?php
-                      $query = "SELECT * FROM orders_info";
-                      $run = mysqli_query($conn,$query);
-                      if(mysqli_num_rows($run) > 0){
-
-
-                       while($row = mysqli_fetch_array($run)){
-                         $order_id = $row['order_id'];
-                         $email = $row['email'];
-                         $address = $row['address'];
-                         $total_amount = $row['total_amt'];
-                         $user_id = $row['user_id'];
-                         $qty = $row['prod_count'];
-
+                      <?php 
+                          while($row=mysqli_fetch_assoc($result)){
+                            $orderid = $row['order_id'];
+                            $user_id = $row['user_id'];
+                            $product_name = $row['product_name'];
+                            $count = $row['conte'];
+                            $date = $row['date_time'];
+                            $status = $row['status'];
+                            echo "
+                            <tr>
+                              <td>$orderid</td>
+                              <td>$user_id</td>
+                              <td>$product_name</td>
+                              <td>$count</td>
+                              <td>$date</td>
+                              <td>$status</td>
+                            </tr>
+                            ";
+                          }
                       ?>
-                          <tr>
-                            <td><?php echo $order_id ?></td>
-                           <td> <?php
-                            $query1 = "SELECT * FROM order_products where order_id = $order_id";
-                            $run1 = mysqli_query($conn,$query1); 
-                              while($row1 = mysqli_fetch_array($run1)){
-                               $product_id = $row1['product_id'];
-
-                               $query2 = "SELECT * FROM products where product_id = $product_id";
-                               $run2 = mysqli_query($conn,$query2);
-
-                               while($row2 = mysqli_fetch_array($run2)){
-                               $product_title = $row2['product_title'];
-                           ?>
-                              <?php echo $product_title ?><br>
-                            <?php }}?></td>
-                            <td><?php echo $email ?></td>
-                            <td><?php echo $address ?></td>
-                            <td><?php echo $total_amount ?></td>
-                            <td><?php echo $qty ?></td>
-                         </tr>
-                         <?php } ?>
-                        
                     </tbody>
-                     <?php
-                   }else {
-                     echo "<center><h2>No users Available</h2><br><hr></center>";
-                     }
-                  ?>
                   </table>
                   
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>

@@ -83,25 +83,25 @@
             </a>
           </li>
                    
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <a class="nav-link" href="profile.php">
                             <icons-image _ngcontent-aye-c22="" _nghost-aye-c19=""><i _ngcontent-aye-c19="" class="material-icons icon-image-preview">settings</i></icons-image>
                             <p>setting</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item ">
                         <a class="nav-link" href="salesofday.php">
                             <i class="material-icons">library_books</i>
-                            <p>sales</p>
+                            <p>Orders</p>
                         </a>
                     </li>
 
-                    <li class="nav-item ">
+                    <!-- <li class="nav-item ">
                         <a class="nav-link" href="../../chat/login.php">
                             <i class="material-icons">notifications</i>
                             <p>Discussion</p>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item active-pro ">
                 <a class="nav-link" href="./upgrade.html">
                     <i class="material-icons">unarchive</i>

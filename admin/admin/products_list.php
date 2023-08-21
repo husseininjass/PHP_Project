@@ -1,28 +1,76 @@
 <?php
 session_start();
+
+include "sidenav.php";
+include "topheader.php";
 include("../../user/connect.php");
 error_reporting(0);
-// if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
-// {
-// $product_id=$_GET['product_id'];
-// $sql ="SELECT * FROM products ";
-// $conn->query($sql);
+if (isset($_GET['action']) && $_GET['action'] != "" && $_GET['action'] == 'delete') {
+  $product_id = $_GET['product_id'];
 
-// list($picture)=mysqli_fetch_array($result);
-// $path="../product_images/$picture";
+  
+  $sql = "SELECT photo FROM products WHERE product_id = $product_id";
+  $result = $conn->query($sql);
+  $row = mysqli_fetch_assoc($result);
+  $pic_name = $row['photo'];
 
-// if(file_exists($path)==true)
-// {
-//   unlink($path);
-// }
-// else
-// {}
-/*this is delet query*/
-// $query "DELETE from products where product_id=$product_id";
-// $conn->query($query);
-// }
+  $path = "../product_images/$pic_name";
 
-///pagination
+  if (file_exists($path)) {
+      unlink($path);
+  }
+
+  
+  $query = "DELETE FROM products WHERE product_id = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("i", $product_id);
+  $stmt->execute();
+  $stmt->close();
+}
+//update products
+$display = 'none';
+if(isset($_POST["updateproduct"])){
+  $product_id=$_POST['product_id'];
+  $stat = "SELECT * FROM products WHERE product_id=$product_id";
+  $result = mysqli_query($conn,$stat);
+  $resultcheck1 = mysqli_num_rows($result);
+  if($resultcheck1 > 0)
+  {
+      while($row = mysqli_fetch_assoc($result))
+
+      {   
+          $product_id = $row['product_id'];
+          $newfName= $row["product_name"];
+          $newlName= $row["price"];
+          // $newEmail= $row[""];
+          $newmobile= $row["quantity"];
+          $newPassword= $row["description"];
+          $sale = $row['sale'];
+          $display= 'block';
+      }
+  }
+}
+if(isset($_POST["update"])){
+  $newfName= $_POST["productname"];
+  $newlName= $_POST["price"];
+  // $newEmail= $_POST["newEmail"];
+  $newmobile= $_POST["quantity"];
+  $newPassword= $_POST["description"];
+  $sale = $_POST['sale'];
+  $product_id=$_POST['productid'];
+  $query1= "
+  UPDATE products SET product_name='$newfName',
+   price='$newlName',
+  quantity='$newmobile',
+  description='$newPassword',
+  sale='$sale'
+   WHERE product_id='$product_id'
+   ";
+  $result = mysqli_query($conn,$query1);
+  $display= 'none';
+}
+
+// pagination
 
 $page=$_GET['page'];
 
@@ -34,8 +82,7 @@ else
 {
 $page1=($page*10)-10;	
 } 
-include "sidenav.php";
-include "topheader.php";
+
 ?>
       <!-- End Navbar -->
       <div class="content">
@@ -45,6 +92,24 @@ include "topheader.php";
          <div class="col-md-14">
             <div class="card ">
               <div class="card-header card-header-primary">
+              <div id="editdiv" style="display: <?php echo $display?>; ">
+                    <form action="products_list.php" method="post">
+                        <input type="hidden" value="<?php echo $product_id?>" name="productid">
+                        <label class="col-2">Product Name:</label>
+                        <input class="col-5" type="text" value="<?php echo $newfName?>" name="productname"><br>
+                        <label class="col-2">Price:</label>
+                        <input class="col-5" type="number" value="<?php echo $newlName?>" name="price"><br>
+                        <label class="col-2">Quantity:</label>
+                        <input class="col-5" type="number" value="<?php echo $newmobile?>" name="quantity"><br>
+                        <label class="col-2">Discription</label>
+                        <input class="col-5" type="text" value="<?php echo $newPassword?>" name="description"><br>
+                        <label class="col-2">sale</label>
+                        <input class="col-5" type="number" value="<?php echo $sale?>" name="sale"><br>
+                        
+                     
+                        <input type="submit" class="btn btn-outline-secondary" value="Save" name="update">
+                    </form>
+              </div>
                 <h4 class="card-title"> Products List</h4>
                 
               </div>
@@ -52,19 +117,30 @@ include "topheader.php";
                 <div class="table-responsive ps">
                   <table class="table tablesorter " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Image</th><th>Name</th><th>Price</th><th>
+                      <tr><th>Image</th><th>Product Id</th><th>Name</th><th>Price</th><th>Sale %</th><th>Quantity</th>
 	                      <a class=" btn btn-primary" href="add_products.php">Add New</a></th></tr></thead>
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($conn,"SELECT * FROM products")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($conn,"SELECT * FROM products");
 
-                        while(list($product_id,$image,$product_name,$price)=mysqli_fetch_array($result))
+                        while($row=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../product_images/' style='width:50px; height:50px; border:groove #000'></td><td>$product_name</td>
-                        <td>$price</td>
+                       $image=$row["photo"];
+                       $product_name = $row['product_name'];
+                       $price = $row['price'];
+                       $quantity = $row['quantity'];
+                       $product_id = $row['product_id'];
+                       $sale = $row['sale'];
+                        echo "<tr><td><img src='../product_images/$image' style='width:50px; height:50px; border:groove #000'></td><td>$product_id</td><td>$product_name</td>
+                        <td>$price</td><td>$sale</td><td>$quantity</td>
                         <td>
-                        <a class=' btn btn-success' href='clothes_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        <a class=' btn btn-danger' href='products_list.php?product_id=$product_id&action=delete'>Delete</a>
+                        
+                        <form method='post'>
+                        <input type='hidden' value=' " . $product_id . "' name='product_id'>
+                        <input class='btn btn-outline-primary' type='submit' value='Edit' name='updateproduct'>
+                        </form>
                         </td></tr>";
                         }
 
