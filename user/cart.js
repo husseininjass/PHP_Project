@@ -25,6 +25,54 @@ fetch('checkLogin.php',{
     alert("Error:",error);
 })
 
+document.getElementById('profileIcon').addEventListener('click',function(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./profile.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+
+})
+
+function checkUser(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./cart.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+  
+  }
+  
+
+  
 
 fetch("viewCart.php",{
     method: "POST",
@@ -51,11 +99,11 @@ fetch("viewCart.php",{
         let delete_item=document.createElement('span');
         let product_price = document.createElement('td');
         let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
-        product_price.textContent=sale;
+        product_price.textContent=sale + " JOD";
         product_id.textContent=element['product_id'];
-        photo.setAttribute('src',"../admin/products_images/"+ element['photo']);
+        photo.setAttribute('src',"../admin/product_images/"+ element['photo']);
         photo.setAttribute('alt',"photo");
-        photo.style.height='50px';
+        photo.style.height='70px';
         product_photo.appendChild(photo);
         product_name.textContent=element['product_name'];
         add_one.innerHTML='<i class="fa-solid fa-plus"></i>&nbsp;';
@@ -205,7 +253,7 @@ function logout(){
 }
 
 
-let categoryid = document.querySelector('#category');
+let categoryid = document.querySelector('#categoryselect');
 
 function fetchCategory() {
   fetch('../admin/admin/cata.php', {

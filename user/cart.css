@@ -44,10 +44,7 @@ li{
     background-color: black;
     border:none;
 }
-i{
-    /* background-color: white; */
-    color: white;
-}
+
 
 footer{
     display: flex;
@@ -59,4 +56,34 @@ footer p , h6{
 }
 h6{
     font-weight: bold;
+}
+#div{
+    margin-top:8%;
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+}
+i{
+    color:black;
+}
+tr{
+    margin:1%;
+    border:12px solid black;
+    padding:1%;
+}
+#deleteCartBtn{
+    margin:1% 60%;
+    width:20%;
+}
+#deleteDiv{
+    margin:1% 60%;
+    width:23%;
+}
+#totalDiv{
+    margin:1% 60%;
+    width:23%;
+    font-weight: 1000;
+}
+#chkbtn{
+    width:88%;
 }

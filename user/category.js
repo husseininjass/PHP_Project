@@ -190,7 +190,7 @@ function logout(){
 }
 
 
-let categoryid = document.querySelector('#category');
+let categoryid = document.querySelector('#categoryselect');
 
 function fetchCategory() {
   fetch('../admin/admin/cata.php', {

@@ -6,7 +6,7 @@
     text-decoration: none;
 }
 body{
-    background-color: #ddd;
+    background-color: #ccc;
 }
 header{
     margin-bottom: 3.5rem;
@@ -16,10 +16,15 @@ header{
     position: sticky;
     left: 0;
     top: 0;
+    height:100px;
+    font-size: 20px;
 }
-ul li {
-    margin-right: 1rem;
-    
+ul{
+    width:50%;
+}
+li{
+    padding-left: 5%;
+    color: white !important;
 }
 .logo{
     color: white;
@@ -30,8 +35,14 @@ a{
 }
 #category{
     transform: translateY(10px);
+    color: white;
+    background-color: black;
+    /* border:none; */
 }
-
+i{
+    /* background-color: white; */
+    color: white;
+}
 section .container{
     background-color: #000000;
     width: 100%;

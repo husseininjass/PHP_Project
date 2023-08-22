@@ -40,13 +40,13 @@
                                 <a href="./signup.html" class="nav-link ">Sign up</a>
                             </li>
                             <li>
-                                <i id="profileIcon" class="fa-solid fa-user fa-lg" ></i>
+                                <i id="profileIcon" class="fa-solid fa-user fa-lg" style="color: white;"></i>
                             </li>
                             <li>
-                                <i id="cartIcon" class="fa-solid fa-cart-shopping fa-lg" onclick="checkUser()"></i>
+                                <i id="cartIcon" class="fa-solid fa-cart-shopping fa-lg" onclick="checkUser()" style="color: white;"></i>
                             </li>
                             <li>
-                                <i id="logoutIcon" class="fa-solid fa-right-from-bracket fa-lg" onclick="logout()"></i>
+                                <i id="logoutIcon" class="fa-solid fa-right-from-bracket fa-lg" onclick="logout()" style="color: white;"></i>
                             </li>
                         </ul>
                     </div>
@@ -54,18 +54,18 @@
            </div>
         </header>       
         <div id="div">
-            <table id="table" border="2" width="80%" >
+            <table id="table" border="2" width="100%" >
             </table>
         </div>
-        <input type="button" id="deleteCartBtn" value="Delete Cart">
+        <input type="button" id="deleteCartBtn" value="Delete Cart" class="btn btn-primary">
         <div id="deleteDiv" style="display: none;">
             <p id="deleteP">Are you sure you want to delete your cart?</p>
-            <input type="button" id="yesBtn" value="Yes">
-            <input type="button" id="noBtn" value="No">
+            <input type="button" id="yesBtn" value="Yes" class="btn btn-primary">
+            <input type="button" id="noBtn" value="No" class="btn btn-primary">
         </div>
-        <div>
+        <div id="totalDiv">
             <p id="totalPrice"></p>
-            <input type="button" id="chkbtn" value="check out">
+            <input type="button" id="chkbtn" value="check out" class="btn btn-primary" >
         </div>
         <footer>
             <div class="text-center">
