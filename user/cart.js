@@ -53,7 +53,7 @@ fetch("viewCart.php",{
         let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
         product_price.textContent=sale;
         product_id.textContent=element['product_id'];
-        photo.setAttribute('src',element['photo']);
+        photo.setAttribute('src',"../admin/products_images/"+ element['photo']);
         photo.setAttribute('alt',"photo");
         photo.style.height='50px';
         product_photo.appendChild(photo);
