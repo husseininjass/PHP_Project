@@ -402,3 +402,78 @@ let lg=0;
         document.getElementById("viewaddress-div").style.display = 'flex';
         document.getElementById("editaddress-div").style.display = 'none';
     })
+    
+    // ================ start NAVBAR==========
+    // ================ start NAVBAR==========
+    // ================ start NAVBAR==========
+ 
+
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        // console.log(data);
+        if(data == false){
+            document.getElementById('profileIcon').style.display='none';
+            document.getElementById('cartIcon').style.display='none';
+            document.getElementById('logoutIcon').style.display='none';
+    
+        }else{
+            document.getElementById('loginLi').style.display='none';
+            document.getElementById('signupLi').style.display='none';
+            
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+    function logout(){
+        fetch('logout.php',{
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify({
+        }),
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            // console.log(data);
+            window.location.href=('../index.html');
+        })
+        .catch(error=>{
+            alert("Error:",error);
+        })
+    }
+    
+    let categoryid = document.querySelector('#category');
+    function fetchCcategory(){
+      fetch('admin/admin/cata.php' , {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(" "),
+    
+      })
+      .then(r => r.json())
+      .then(function(data){
+        console.log(data);
+        data.forEach(function(e , index){
+          categoryid.innerHTML += `
+          <a href="user/category.html"><option value="${data[index].category_id}">${data[index].name}</option></a>
+            
+          `
+        })
+        
+      });
+    }
+    fetchCcategory();
+
+    // ================ end NAVBAR==========//
+    // ================ end NAVBAR==========//
+    // ================ end NAVBAR==========//

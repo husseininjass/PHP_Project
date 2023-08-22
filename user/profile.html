@@ -6,182 +6,351 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/a11421cbe7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="profile.css">
+
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a11421cbe7.js" crossorigin="anonymous"></script>
+    <style>
+                
+        .url, hr {
+            text-align: center;
+        }
+
+        .url hr {
+            margin-left: 20%;
+            width: 60%;
+        }
+
+        .url a {
+            color: #818181;
+            display: block;
+            font-size: 20px;
+            margin: 10px 0;
+            padding: 6px 8px;
+            text-decoration: none;
+        }
+
+        .url a:hover, .url .active {
+            background-color: #e8f5ff;
+            border-radius: 28px;
+            color: #000;
+            margin-left: 14%;
+            width: 65%;
+        }
+        .view p i {
+            color: #000; 
+        }
+
+    </style>
 </head>
 <body>
-    <div>
-        <!---------------First Name------------>
-        <!---------------First Name------------>
-        <!---------------First Name------------>
-        <div id="viewfname-div" class="view">
-            <p>First name:</p>
-            <p id="fnamep"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editfname()"></i></p>
-        </div>
-        <div id="editfname-div" style="display: none;" class="edit">
-            <form method="post">
-                <label for="fname">First name:</label>
-                <br>
-                <input type="text" id="fname">
-                <p id="fnamePValid" class="invalid" style="display: none;">Letters Only</p>
-                <br>
-                <input type="button" id="fnamebtn" value="Save">
-                <input type="button" id="fnamecancel" value="cancel">
-            </form>
-        </div>
-        
-        
-        <!---------------Last Name------------>
-        <!---------------Last Name------------>
-        <!---------------Last Name------------>
-        <div id="viewlname-div" class="view">
-            <p>Last name:</p>
-            <p id="lnamep"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editlname()"></i></p>
-        </div>
-        <div id="editlname-div" style="display: none;" class="edit">
-            <form method="post">
-                <label for="lname">Last name:</label>
-                <br>
-                <input type="text" id="lname">
-                <p id="lnamePValid" class="invalid" style="display: none;">Letters Only</p>
-                <br>
-                <input type="button" id="lnamebtn" value="Save">
-                <input type="button" id="lnamecancel" value="cancel">
-            </form>
-        </div>
-        
-        
-        <!---------------Email------------>
-        <!---------------Email------------>
-        <!---------------Email------------>
-        <div id="viewemail-div" class="view">
-            <p>Email:</p>
-            <p id="emailp"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editemail()"></i></p>
-        </div>
-        <div id="editemail-div" style="display: none;" class="edit">
-            <form method="post">
-                <label for="email">email:</label>
-                <br>
-                <input type="text" id="email">
-                <p id="emailPValid" class="invalid" style="display: none;">example@mail.com</p>
-                <br>
-                <input type="button" id="emailbtn" value="Save">
-                <input type="button" id="emailcancel" value="cancel">
-            </form>
-        </div>
-        
-        
-        <!---------------Password------------>
-        <!---------------Password------------>
-        <!---------------Password------------>
-        <div id="viewpassword-div" class="view">
-            <p>Password:</p>
-            <p>*********</p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editpassword()"></i></p>
-        </div>
-        <div id="editpassword-div" style="display: none;" class="edit">
-            <form method="post">
-                <label for="oldPassword">Old Password:</label>
-                <br>
-                <input type="password" id="oldPassword"><br>
-                <p id="invalid password" style="display: none;">Incorrect Password</p>
-                <br>
-                <label for="newPassword">New Password:</label>
-                <br>
-                <input type="password" id="NewPassword">
-                <p id="numberPass" style="display: none;" ><b>Number</b></p>
-                <p id="spacePass" style="display: none;" ><b>No Space</b></p>
-                <p id="capitalPass" style="display: none;" ><b>Uppercase</b> letter</p>
-                <p id="letterPass" style="display: none;" ><b>Lowercase</b> letter</p>
-                <p id="lengthPass" style="display: none;" ><b>(8-32) characters</b></p>
-                <p id="spChPass" style="display: none;" ><b>Special Characters</b></p>
-                <br>
-                <input type="button" id="passwordBtn" value="Save">
-                <input type="button" id="passwordcancel" value="cancel">
-            </form>
-        </div>
-        
-        
-        
-        <!---------------Phone------------>
-        <!---------------Phone------------>
-        <!---------------Phone------------>
-        <div class="view" id="viewphone-div">
-            <p>Phone:</p>
-            <p id="phonep"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editphone()"></i></p>
-        </div>
-        <div style="display: none;" id="editphone-div" class="edit">
-            <form method="post">
-                <label for="phone">Phone:</label>
-                <br>
-                <input type="number" id="phone">
-                <p id="phonePValid" class="invalid" style="display: none;">10-Digits (0123456789)</p>
-                <br>
-                <input type="button" id="phonebtn" value="Save">
-                <input type="button" id="phonecancel" value="cancel">
-            </form>
-        </div>
-        
-        
-        <!---------------City------------>
-        <!---------------City------------>
-        <!---------------City------------>
-        <div class="view" id="viewcity-div">
-            <p>City:</p>
-            <p id="cityp"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editcity()"></i></p>
-        </div>
-        <div style="display: none;" id="editcity-div" class="edit">
-            <form method="post">
-                <label for="city">City:</label>
-                <br>
-                <select id="city">
-                    <option  selected disabled>City</option>
-                    <option value="Amman">Amman</option>
-                    <option value="Ajloun">Ajloun</option>
-                    <option value="Aqaba">Aqaba</option>
-                    <option value="Balqa">Balqa</option>
-                    <option value="Irbid">Irbid</option>
-                    <option value="Jerash">Jerash</option>
-                    <option value="Karak">Karak</option>
-                    <option value="Ma'an">Ma'an</option>
-                    <option value="Madaba">Madaba</option>
-                    <option value="Mafraq">Mafraq</option>
-                    <option value="Tafilah">Tafilah</option>
-                    <option value="Zarqa">Zarqa</option>
-                </select>
-                <p id="cityPValid" class="invalid" style="display: none;">Select City</p>
-                <br>
-                <input type="button" id="citybtn" value="Save">
-                <input type="button" id="citycancel" value="cancel">
-            </form>
-        </div>
 
-
-        <!---------------Address------------>
-        <!---------------Address------------>
-        <!---------------Address------------>
-        <div class="view" id="viewaddress-div">
-            <p>Address:</p>
-            <p id="addressp"></p>
-            <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editaddress()"></i></p>
-        </div>
-        <div style="display: none;" id="editaddress-div" class="edit">
+    <header>
+        <div class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container">
+                <span class="logo">POWERPCMALL</span>
+      
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu">
+                    <span class="navbar-toggler-icon bg-dark"></span>
+                </button>
+      
+                <div class="collapse navbar-collapse" id="mainmenu">
+                    <ul class="navbar-nav ms-auto navo">
+                        <li class="nav-item sign-in" id="homebtn">
+                            <a href="../index.html" class="nav-link ">Home</a>
+                        </li>
+                        <li class="nav-item" id="home">
+                            <select name="" id="categoryselect" >
+                                <option value="" selected disabled>Category</option>
+                        
+                            </select>
+                        </li>
+                        <li class="nav-item sign-in" id="loginLi">
+                            <a href="./login.html" class="nav-link ">Login</a>
+                        </li>
+                        <li class="nav-item sign-up" id="signupLi">
+                            <a href="./signup.html" class="nav-link ">Sign up</a>
+                        </li>
+                      <!-- <li class="nav-item sign-up">
+                          <a href="Registration page/index.html" class="nav-link "><i class="fa-solid fa-cart-shopping"></i></a>
+                      </li> -->
+                      <!-- <li class="nav-item sign-up">
+                        <a href="#" class="nav-link "><i class="fa-regular fa-user"></i></a>
+                    </li> -->
+                    <!-- <li class="nav-item sign-up">
+                        <a href="./profile.html" class="nav-link ">
+                            <i id="profileIcon"class="fa-regular fa-user"></i>
+                        </a>
+                    </li>  -->
+                        <li>
+                            <i id="profileIcon" class="fa-solid fa-user fa-lg" ></i>
+                        </li>
+                        <li>
+                            <i id="cartIcon" class="fa-solid fa-cart-shopping fa-lg" onclick="checkUser()"></i>
+                        </li>
+                        <li>
+                            <i id="logoutIcon" class="fa-solid fa-right-from-bracket fa-lg" onclick="logout()"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+       </div>
+    </header>  
+    <section class="mann">   
+        <div class="container emp-profile">
             <form method="post">
-                <label for="address">Address:</label>
-                <br>
-                <textarea rows="5" cols="20" id="address"></textarea>
-                <p id="addressPValid" class="invalid" style="display: none;">Insert your address</p>
-                <br/>
-                <input type="button" id="addressBtn" value="Save">
-                <input type="button" id="addresscancel" value="cancel">
-            </form>
-        </div>
-    </div>
+                <div class="row">
+                    <div class="col-md-3 ">
+                        <div class="profile-img">
+                            <img src="https://cdn.discordapp.com/attachments/1135103220625199204/1143151926805012502/om78-removebg-preview_1.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h6>
+                                        Profile
+                                    </h6>
+                                    <h5 id="fnamep">
+                                        welcome
+                                    </h5>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a  href="#" >About</a>
+                                </li>
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            
+                            <!-- <a href="/index.html">Home</a><br/>
+                            <a href="./orders.html">orders</a><br/> -->
+                            
+                                <div class="url">
+                                    <a href="/index.html" class="active">Home</a>
+                                    <hr align="center">
+                                </div>
+                                <div class="url">
+                                    <a href="./orders.html">Orders</a>
+                                    <hr align="center">
+                                </div>
+                        
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>First name:</label>
+                                            </div>
 
-    <a href="./orders.html">Orders</a>
+                                            <div class="col-md-9">
+                                                <div id="viewfname-div" class="view">
+                                                    <p id="fnamep"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editfname()"></i></p>
+                                                </div>
+                                                <div id="editfname-div" style="display: none;" class="edit">
+                                                    <form method="post">
+                                                        <label for="fname">First name:</label>
+                                                        <br>
+                                                        <input type="text" id="fname">
+                                                        <p id="fnamePValid" class="invalid" style="display: none;">Letters Only</p>
+                                                        <br>
+                                                        <input type="button" id="fnamebtn" value="Save">
+                                                        <input type="button" id="fnamecancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Last name:</label>
+                                            </div>
+                                            
+                                            <div class="col-md-9">
+                                                <div id="viewlname-div" class="view">
+                                                    <p id="lnamep"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editlname()"></i></p>
+                                                </div>
+                                                <div id="editlname-div" style="display: none;" class="edit">
+                                                    <form method="post">
+                                                        <label for="lname">Last name:</label>
+                                                        <br>
+                                                        <input type="text" id="lname">
+                                                        <p id="lnamePValid" class="invalid" style="display: none;">Letters Only</p>
+                                                        <br>
+                                                        <input type="button" id="lnamebtn" value="Save">
+                                                        <input type="button" id="lnamecancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Email:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div id="viewemail-div" class="view">
+                                                    <p id="emailp"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editemail()"></i></p>
+                                                </div>
+                                                <div id="editemail-div" style="display: none;" class="edit">
+                                                    <form method="post">
+                                                        <label for="email">email:</label>
+                                                        <br>
+                                                        <input type="text" id="email">
+                                                        <p id="emailPValid" class="invalid" style="display: none;">example@mail.com</p>
+                                                        <br>
+                                                        <input type="button" id="emailbtn" value="Save">
+                                                        <input type="button" id="emailcancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Phone:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="view" id="viewphone-div">
+                                                    <p id="phonep"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editphone()"></i></p>
+                                                </div>
+                                                <div style="display: none;" id="editphone-div" class="edit">
+                                                    <form method="post">
+                                                        <label for="phone">Phone:</label>
+                                                        <br>
+                                                        <input type="number" id="phone">
+                                                        <p id="phonePValid" class="invalid" style="display: none;">10-Digits (0123456789)</p>
+                                                        <br>
+                                                        <input type="button" id="phonebtn" value="Save">
+                                                        <input type="button" id="phonecancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Password:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div id="viewpassword-div" class="view">
+                                                    <p>*********</p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editpassword()"></i></p>
+                                                </div>
+                                                <div id="editpassword-div" style="display: none;" class="edit">
+                                                    <form method="post">
+                                                        <label for="oldPassword">Old Password:</label>
+                                                        <br>
+                                                        <input type="password" id="oldPassword"><br>
+                                                        <p id="invalid password" style="display: none;">Incorrect Password</p>
+                                                        <br>
+                                                        <label for="newPassword">New Password:</label>
+                                                        <br>
+                                                        <input type="password" id="NewPassword">
+                                                        <p id="numberPass" style="display: none;" ><b>Number</b></p>
+                                                        <p id="spacePass" style="display: none;" ><b>No Space</b></p>
+                                                        <p id="capitalPass" style="display: none;" ><b>Uppercase</b> letter</p>
+                                                        <p id="letterPass" style="display: none;" ><b>Lowercase</b> letter</p>
+                                                        <p id="lengthPass" style="display: none;" ><b>(8-32) characters</b></p>
+                                                        <p id="spChPass" style="display: none;" ><b>Special Characters</b></p>
+                                                        <br>
+                                                        <input type="button" id="passwordBtn" value="Save">
+                                                        <input type="button" id="passwordcancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>Address:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="view" id="viewaddress-div">
+                                                    <p></p>
+                                                    <p id="addressp"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editaddress()"></i></p>
+                                                </div>
+                                                <div style="display: none;" id="editaddress-div" class="edit">
+                                                    <form method="post">
+                                                        <label for="address">Address:</label>
+                                                        <br>
+                                                        <textarea rows="5" cols="20" id="address"></textarea>
+                                                        <p id="addressPValid" class="invalid" style="display: none;">Insert your address</p>
+                                                        <br/>
+                                                        <input type="button" id="addressBtn" value="Save">
+                                                        <input type="button" id="addresscancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label>City:</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="view" id="viewcity-div">
+                                                    <p id="cityp"></p>
+                                                    <p><i class="fa-solid fa-pen-to-square fa-lg" onclick="editcity()"></i></p>
+                                                </div>
+                                                <div style="display: none;" id="editcity-div" class="edit">
+                                                    <form method="post">
+                                                        <label for="city"></label>
+                                                        <br>
+                                                        <select id="city">
+                                                            <option  selected disabled>City</option>
+                                                            <option value="Amman">Amman</option>
+                                                            <option value="Ajloun">Ajloun</option>
+                                                            <option value="Aqaba">Aqaba</option>
+                                                            <option value="Balqa">Balqa</option>
+                                                            <option value="Irbid">Irbid</option>
+                                                            <option value="Jerash">Jerash</option>
+                                                            <option value="Karak">Karak</option>
+                                                            <option value="Ma'an">Ma'an</option>
+                                                            <option value="Madaba">Madaba</option>
+                                                            <option value="Mafraq">Mafraq</option>
+                                                            <option value="Tafilah">Tafilah</option>
+                                                            <option value="Zarqa">Zarqa</option>
+                                                        </select>
+                                                        <p id="cityPValid" class="invalid" style="display: none;">Select City</p>
+                                                        <br>
+                                                        <input type="button" id="citybtn" value="Save">
+                                                        <input type="button" id="citycancel" value="cancel">
+                                                    </form>
+                                                </div>
+                                    
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <!-- <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Profession</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Web Developer and Designer</p>
+                                            </div>
+                                        </div> -->
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+    </section>
+    
     <script src="./profile.js"></script>
 </body>
 </html>
