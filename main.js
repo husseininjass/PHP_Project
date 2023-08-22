@@ -1,3 +1,29 @@
+fetch('user/checkLogin.php',{
+  method: "POST",
+  headers:{
+      "Content-Type":"application/json",
+  },
+  body:JSON.stringify({
+}),
+})
+.then(response=>response.json())
+.then(data=>{
+  // console.log(data);
+  if(data == false){
+      document.getElementById('profileIcon').style.display='none';
+      document.getElementById('cartIcon').style.display='none';
+      document.getElementById('logoutIcon').style.display='none';
+
+  }else{
+      document.getElementById('loginLi').style.display='none';
+      document.getElementById('signupLi').style.display='none';
+      
+  }
+})
+.catch(error=>{
+  alert("Error:",error);
+})
+
 const swiper = new Swiper('.swiper', {
   
     autoplay: {
@@ -41,7 +67,7 @@ function fetchCategory() {
 fetchCategory();
 
 category.addEventListener("change", function() {
-  const selected = category.value
+  const selected = category.value;
   if (selected) {
     window.location.href = "user/category.html"
   }
@@ -56,7 +82,7 @@ selectCategory.addEventListener('change',function(){
     
 })
 document.getElementById('profileIcon').addEventListener('click',function(){
-    fetch('./user/checkLogin.php',{
+    fetch('user/checkLogin.php',{
         method: "POST",
         headers:{
             "Content-Type":"application/json",
@@ -67,9 +93,9 @@ document.getElementById('profileIcon').addEventListener('click',function(){
     .then(response=>response.json())
     .then(data=>{
         if(data == false){
-            window.location.href=('./user/login.html');
+            window.location.href=('user/login.html');
         }else{
-                window.location.href=('./user/profile.html');
+                window.location.href=('user/profile.html');
         }
     })
     .catch(error=>{
@@ -79,7 +105,7 @@ document.getElementById('profileIcon').addEventListener('click',function(){
 })
 
 function checkUser(){
-  fetch('./user/checkLogin.php',{
+  fetch('user/checkLogin.php',{
       method: "POST",
       headers:{
           "Content-Type":"application/json",
@@ -90,9 +116,9 @@ function checkUser(){
   .then(response=>response.json())
   .then(data=>{
       if(data == false){
-          window.location.href=('./user/login.html');
+          window.location.href=('user/login.html');
       }else{
-              window.location.href=('./user/cart.html');
+              window.location.href=('user/cart.html');
       }
   })
   .catch(error=>{
@@ -101,3 +127,23 @@ function checkUser(){
 
 }
 
+document.getElementById('logoutIcon').addEventListener('click',function(){
+
+  fetch('user/logout.php',{
+      method: "POST",
+      headers:{
+          "Content-Type":"application/json",
+      },
+      body:JSON.stringify({
+  }),
+  })
+  .then(response=>response.json())
+  .then(data=>{
+      // console.log(data);
+      window.location.href=('index.html');
+  })
+  .catch(error=>{
+      alert("Error:",error);
+  })
+
+})

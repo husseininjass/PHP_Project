@@ -1,4 +1,79 @@
 let total=0;
+fetch('checkLogin.php',{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+}),
+})
+.then(response=>response.json())
+.then(data=>{
+    // console.log(data);
+    if(data == false){
+        document.getElementById('profileIcon').style.display='none';
+        document.getElementById('cartIcon').style.display='none';
+        document.getElementById('logoutIcon').style.display='none';
+
+    }else{
+        document.getElementById('loginLi').style.display='none';
+        document.getElementById('signupLi').style.display='none';
+        
+    }
+})
+.catch(error=>{
+    alert("Error:",error);
+})
+
+document.getElementById('profileIcon').addEventListener('click',function(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./profile.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+
+})
+
+function checkUser(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./cart.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+  
+  }
+  
+
+  
+
 fetch("viewCart.php",{
     method: "POST",
     headers:{
@@ -24,11 +99,11 @@ fetch("viewCart.php",{
         let delete_item=document.createElement('span');
         let product_price = document.createElement('td');
         let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
-        product_price.textContent=sale;
+        product_price.textContent=sale + " JOD";
         product_id.textContent=element['product_id'];
-        photo.setAttribute('src',element['photo']);
+        photo.setAttribute('src',"../admin/product_images/"+ element['photo']);
         photo.setAttribute('alt',"photo");
-        photo.style.height='50px';
+        photo.style.height='70px';
         product_photo.appendChild(photo);
         product_name.textContent=element['product_name'];
         add_one.innerHTML='<i class="fa-solid fa-plus"></i>&nbsp;';
@@ -156,4 +231,51 @@ document.getElementById('yesBtn').addEventListener('click', function(){
 
 document.getElementById("chkbtn").addEventListener('click',function(){
     window.location.href=('./payment.html');
+})
+
+function logout(){
+    fetch('logout.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        // console.log(data);
+        window.location.href=('../index.html');
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+}
+
+
+let categoryid = document.querySelector('#categoryselect');
+
+function fetchCategory() {
+  fetch('../admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
+  })
+  .then(r => r.json())
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      categoryid.appendChild(option)
+    })
+  })
+}
+fetchCategory();
+
+categoryid.addEventListener("change", function() {
+  const selected = categoryid.value
+  if (selected) {
+    window.location.href = "./category.html"
+  }
 })

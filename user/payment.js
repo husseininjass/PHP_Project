@@ -1,3 +1,126 @@
+fetch('checkLogin.php',{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+}),
+})
+.then(response=>response.json())
+.then(data=>{
+    // console.log(data);
+    if(data == false){
+        document.getElementById('profileIcon').style.display='none';
+        document.getElementById('cartIcon').style.display='none';
+        document.getElementById('logoutIcon').style.display='none';
+
+    }else{
+        document.getElementById('loginLi').style.display='none';
+        document.getElementById('signupLi').style.display='none';
+        
+    }
+})
+.catch(error=>{
+    alert("Error:",error);
+})
+
+let categoryid = document.querySelector('#categoryselect');
+
+function fetchCategory() {
+  fetch('../admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
+  })
+  .then(r => r.json())
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      categoryid.appendChild(option)
+    })
+  })
+}
+fetchCategory();
+
+categoryid.addEventListener("change", function() {
+    const selected = categoryid.value
+    if (selected) {
+      window.location.href = "./category.html"
+    }
+  })
+
+  document.getElementById('profileIcon').addEventListener('click',function(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./profile.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+
+})
+
+function checkUser(){
+  fetch('checkLogin.php',{
+      method: "POST",
+      headers:{
+          "Content-Type":"application/json",
+      },
+      body:JSON.stringify({
+  }),
+  })
+  .then(response=>response.json())
+  .then(data=>{
+      if(data == false){
+          window.location.href=('./login.html');
+      }else{
+              window.location.href=('./cart.html');
+      }
+  })
+  .catch(error=>{
+      alert("Error:",error);
+  })
+
+}
+document.getElementById('logoutIcon').addEventListener('click',function(){
+
+    fetch('logout.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        // console.log(data);
+        window.location.href=('../index.html');
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+  
+  })
+  
+
+
+
+
 fetch('userData.php')
 .then(response=>response.json())
 .then(data=>{
@@ -16,7 +139,9 @@ fetch('userData.php')
     addressInfoDiv.appendChild(userAddress);
     addressInfoDiv.appendChild(userPhone);
     addressInfoDiv.style.width='70%';
-    addressInfoDiv.style.margin='0 auto';
+    addressInfoDiv.style.marginLeft='auto';
+    addressInfoDiv.style.marginRight='auto';
+    addressInfoDiv.style.marginTop='10%';
 
 })
 .catch(error=>{
@@ -39,8 +164,8 @@ fetch("viewCart.php",{
         // console.log(element);
         let item = document.createElement('div');
         let product_id = document.createElement('p');
-        // let product_photo = document.createElement('p');
-        // let photo=document.createElement('img');
+        let product_photo = document.createElement('p');
+        let photo=document.createElement('img');
         let product_name = document.createElement('p');
         let product_count = document.createElement('p');
         let product_price = document.createElement('p');
@@ -49,10 +174,10 @@ fetch("viewCart.php",{
         
         product_id.textContent=element['product_id'];
         product_id.style.display='none';
-        // photo.setAttribute('src',element['photo']);
-        // photo.setAttribute('alt',"photo");
-        // photo.style.height='50px';
-        // product_photo.appendChild(photo);
+        photo.setAttribute('src',"../admin/product_images/"+ element['photo']);
+        photo.setAttribute('alt',"photo");
+        photo.style.height='50px';
+        product_photo.appendChild(photo);
         product_name.textContent=element['product_name'];
         product_count.textContent="Count: " + element['conte'];
         // product_price.textContent="Price: " + element['price']*element['conte'];
@@ -65,7 +190,7 @@ fetch("viewCart.php",{
         // item.appendChild(product_price);
         document.getElementById('cartInfo').appendChild(item);
         document.getElementById('cartInfo').style.width='70%';
-        document.getElementById('cartInfo').style.margin='0 auto'
+        document.getElementById('cartInfo').style.margin='0 auto';
         item.style.display="flex";
         item.style.justifyContent="space-around";
         // item.style.width='70%';
@@ -193,48 +318,3 @@ document.getElementById('orderBtn').addEventListener('click',function(){
             })
     }
 })
-
-// fetch("viewCart.php",{
-//     method: "POST",
-//     headers:{
-//         "Content-Type":"application/json",
-//     },
-//     body:JSON.stringify({
-// }),
-// })
-// .then(response=>response.json())
-// .then(data=>{
-//     data.map(element=>{
-//         let sale=((+element['price'])-(+element['price'])*(+element['sale'])/100)*element['conte'];
-//         fetch("updateCart.php",{
-//             method: "POST",
-//             headers:{
-//                 "Content-Type":"application/json",
-//             },
-//             body:JSON.stringify({ 
-//                 order_id:data['id'],
-//                 price:sale
-
-//             }),
-//         })
-//         .then(response=>response.json())
-//         .then(data=>{
-//             console.log(data);
-            
-            
-//         })
-//         .catch(error=>{
-//             alert("Error:",error);
-//         })
-//     })
-// })
-// .catch(error=>{
-//     alert("Error:",error);
-// })
-
-
-// })
-// .catch(error=>{
-// alert("Error:",error);
-// })
-// }

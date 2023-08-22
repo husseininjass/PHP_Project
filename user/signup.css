@@ -9,14 +9,13 @@ body{
     background-color: #ccc;
 }
 form {
-    width: 50%;
-    margin: 3% auto;
+    width: 60%;
+    /* margin: 3% auto; */
     text-align: center;
-    border: 3px solid rgb(0, 0, 0);
+    border: 5px solid rgb(133, 133, 223);
     border-radius: 10px;
     padding: 2%;
-    background-color: rgba(75, 75, 154, 0.762);
-    backdrop-filter: blur;
+    background-color: rgb(75, 75, 154);
 }
 /* input{
     width:80%;
@@ -68,6 +67,9 @@ textarea{
     background-color: #ffffff;
     color:#000000;
     border: 3px solid #000000;
+    background-color: #f2f2f5;
+    color:#301362;
+    border: 3px solid #a3a4a7;
     border-radius: 10px;
 }
 /* input:hover,select:hover,textarea:hover{

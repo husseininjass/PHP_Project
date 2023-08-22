@@ -28,14 +28,17 @@
       
               <div class="collapse navbar-collapse" id="mainmenu">
                   <ul class="navbar-nav ms-auto navo">
+                    <li class="nav-item sign-in" id="homebtn">
+                        <a href="./index.html" class="nav-link ">Home</a>
+                    </li>
                       <li class="nav-item" id="home"><select name="" id="category" >
                         <option value="" selected disabled>Category</option>
                         
                       </select></li>
-                      <li class="nav-item sign-in">
-                          <a href="user/login.html" class="nav-link ">Log in</a>
+                      <li class="nav-item sign-in" id="loginLi">
+                          <a href="user/login.html" class="nav-link ">Login</a>
                       </li>
-                      <li class="nav-item sign-up">
+                      <li class="nav-item sign-up" id="signupLi">
                           <a href="user/signup.html" class="nav-link ">Sign up</a>
                       </li>
                       <!-- <li class="nav-item sign-up">
@@ -50,11 +53,14 @@
                         </a>
                     </li>  -->
                         <li>
-                            <i id="profileIcon" class="fa-solid fa-user fa-xl" ></i>
+                            <i id="profileIcon" class="fa-solid fa-user" ></i>
                         </li>
                         <li>
 
-                            <i class="fa-solid fa-cart-shopping fa-xl" onclick="checkUser()"></i>
+                            <i id="cartIcon" class="fa-solid fa-cart-shopping" onclick="checkUser()"></i>
+                        </li>
+                        <li>
+                            <i id="logoutIcon" class="fa-solid fa-right-from-bracket" ></i>
                         </li>
                   </ul>
               </div>

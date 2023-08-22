@@ -25,6 +25,80 @@ fetch('checkLogin.php',{
     alert("Error:",error);
 })
 
+let categoryid = document.querySelector('#categoryselect');
+
+function fetchCategory() {
+  fetch('../admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
+  })
+  .then(r => r.json())
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      categoryid.appendChild(option)
+    })
+  })
+}
+fetchCategory();
+
+categoryid.addEventListener("change", function() {
+    const selected = categoryid.value
+    if (selected) {
+      window.location.href = "./category.html"
+    }
+  })
+
+  document.getElementById('profileIcon').addEventListener('click',function(){
+    fetch('checkLogin.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        if(data == false){
+            window.location.href=('./login.html');
+        }else{
+                window.location.href=('./profile.html');
+        }
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+
+})
+
+function checkUser(){
+  fetch('checkLogin.php',{
+      method: "POST",
+      headers:{
+          "Content-Type":"application/json",
+      },
+      body:JSON.stringify({
+  }),
+  })
+  .then(response=>response.json())
+  .then(data=>{
+      if(data == false){
+          window.location.href=('./login.html');
+      }else{
+              window.location.href=('./cart.html');
+      }
+  })
+  .catch(error=>{
+      alert("Error:",error);
+  })
+
+}
+
+
 fetch("product.php",{
     method: "POST",
     headers:{
@@ -38,9 +112,18 @@ fetch("product.php",{
 .then(data=>{
     data.map(element=>{
         let detailsDiv=document.getElementById('detailsDiv');
-        // let img=document.createElement('img');
-        // img.setAttribute('src',"../images/" + element['photo']);
+        let imgDiv=document.createElement('div');
+        let img=document.createElement('img');
+        img.setAttribute('src',"../admin/product_images/"+ element['photo']);
+        img.style.height='300px';
+        imgDiv.appendChild(img);
+        imgDiv.style.textAlign='center';
+        imgDiv.style.marginBottom='10%';
+        detailsDiv.appendChild(imgDiv);
+
+
         let nameP=document.createElement('p');
+        nameP.setAttribute('class','nameOfProduct')
         nameP.textContent=element['product_name'];
         detailsDiv.appendChild(nameP);
         let description=document.createElement('p');
@@ -69,11 +152,13 @@ fetch("product.php",{
         let countInput=document.createElement('input');
         countInput.setAttribute('type','number');
         countInput.setAttribute('id','countNumber');
+        countInput.style.width='30px';
         countInput.value=1;
         countP.appendChild(countInput);
         detailsDiv.appendChild(countP);
         let addCartBtn=document.createElement('input');
         addCartBtn.setAttribute('type','button');
+        addCartBtn.setAttribute('class','btn btn-primary');
         addCartBtn.setAttribute('value','Add Cart');
         addCartBtn.setAttribute('onclick',"AddCart()");
         detailsDiv.appendChild(addCartBtn);
@@ -92,30 +177,49 @@ fetch("product.php",{
                 // console.log(element['comment']);
                 // console.log(element['first_name']);
                 let commentP=document.createElement('p');
+                commentP.style.border='2px solid rgb(116, 116, 116)';
+                commentP.style.width='50%';
+                commentP.style.marginLeft='auto';
+                commentP.style.marginRight='auto';
+
+                commentP.style.borderRadius='10px';
                 // commentP.style.display='flex';
                 let fnameP=document.createElement('p');
                 fnameP.style.width='10%';
+                fnameP.style.color='blue';
+                fnameP.style.paddingLeft='2%';
+                fnameP.style.paddingTop='2%';
                 // fnameP.style.border='1px solid black';
 
                 let comment=document.createElement('p');
                 fnameP.textContent=element['first_name'];
                 comment.textContent=element['comment'];
+                comment.style.marginLeft='10%';
+                
                 // comment.style.border='1px solid black';
                 commentP.appendChild(fnameP);
                 commentP.appendChild(comment);
                 document.getElementById('commentDiv').appendChild(commentP);
 
             })
+            let addCommentP=document.createElement('p');
+            addCommentP.style.marginLeft='auto';
+            addCommentP.style.marginRight='auto';
+            addCommentP.style.width='50%';
             let addComment=document.createElement('textarea');
-            addComment.setAttribute('cols',30);
-            addComment.setAttribute('rows',5); 
+            addComment.setAttribute('cols',50);
+            addComment.setAttribute('placeholder','Write your comment here...');
+            addComment.setAttribute('rows',2); 
             addComment.setAttribute('id','textareaComment'); 
-            document.getElementById('commentDiv').appendChild(addComment);
+            addCommentP.appendChild(addComment);
+            // document.getElementById('commentDiv').appendChild(addComment);
             let commentBtn=document.createElement('input');
             commentBtn.setAttribute('type','button');
             commentBtn.setAttribute('value','Add Comment');
+            commentBtn.setAttribute('class','btn btn-primary');
             commentBtn.setAttribute('onclick','addComment()');
-            document.getElementById('commentDiv').appendChild(commentBtn);
+            addCommentP.appendChild(commentBtn);
+            document.getElementById('commentDiv').appendChild(addCommentP);
 
 
         })
@@ -194,7 +298,8 @@ function addComment(){
     })
 }
 
-function logout(){
+document.getElementById('logoutIcon').addEventListener('click',function(){
+
     fetch('logout.php',{
         method: "POST",
         headers:{
@@ -211,26 +316,10 @@ function logout(){
     .catch(error=>{
         alert("Error:",error);
     })
-}
-
-let categoryid = document.querySelector('#category');
-function fetchCcategory(){
-  fetch('admin/admin/cata.php' , {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(" "),
-
+  
   })
-  .then(r => r.json())
-  .then(function(data){
-    console.log(data);
-    data.forEach(function(e , index){
-      categoryid.innerHTML += `
-      <a href="user/category.html"><option value="${data[index].category_id}">${data[index].name}</option></a>
-        
-      `
-    })
-    
-  });
-}
-fetchCcategory();
+  
+
+
+
+
