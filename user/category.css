@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: fantasy;
+    /* font-family: fantasy; */
     text-decoration: none;
 }
 header{
@@ -61,4 +61,15 @@ i{
 
 @media(min-width: 280px) and (max-width: 780px){
   
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #000000;
+}
+footer p , h6{
+    color: white;
+}
+h6{
+    font-weight: bold;
 }

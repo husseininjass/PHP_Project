@@ -25,6 +25,7 @@ fetch('checkLogin.php',{
     alert("Error:",error);
 })
 
+
 fetch("product.php",{
     method: "POST",
     headers:{
@@ -38,9 +39,18 @@ fetch("product.php",{
 .then(data=>{
     data.map(element=>{
         let detailsDiv=document.getElementById('detailsDiv');
-        // let img=document.createElement('img');
-        // img.setAttribute('src',"../images/" + element['photo']);
+        let imgDiv=document.createElement('div');
+        let img=document.createElement('img');
+        img.setAttribute('src',"../admin/product_images/"+ element['photo']);
+        img.style.height='300px';
+        imgDiv.appendChild(img);
+        imgDiv.style.textAlign='center';
+        imgDiv.style.marginBottom='10%';
+        detailsDiv.appendChild(imgDiv);
+
+
         let nameP=document.createElement('p');
+        nameP.setAttribute('class','nameOfProduct')
         nameP.textContent=element['product_name'];
         detailsDiv.appendChild(nameP);
         let description=document.createElement('p');
@@ -74,6 +84,7 @@ fetch("product.php",{
         detailsDiv.appendChild(countP);
         let addCartBtn=document.createElement('input');
         addCartBtn.setAttribute('type','button');
+        addCartBtn.setAttribute('class','btn btn-primary');
         addCartBtn.setAttribute('value','Add Cart');
         addCartBtn.setAttribute('onclick',"AddCart()");
         detailsDiv.appendChild(addCartBtn);
@@ -114,6 +125,7 @@ fetch("product.php",{
             let commentBtn=document.createElement('input');
             commentBtn.setAttribute('type','button');
             commentBtn.setAttribute('value','Add Comment');
+            commentBtn.setAttribute('class','btn btn-primary');
             commentBtn.setAttribute('onclick','addComment()');
             document.getElementById('commentDiv').appendChild(commentBtn);
 
@@ -213,24 +225,30 @@ function logout(){
     })
 }
 
-let categoryid = document.querySelector('#category');
-function fetchCcategory(){
-  fetch('admin/admin/cata.php' , {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(" "),
 
+let categoryid = document.querySelector('#category');
+
+function fetchCategory() {
+  fetch('../admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
   })
   .then(r => r.json())
-  .then(function(data){
-    console.log(data);
-    data.forEach(function(e , index){
-      categoryid.innerHTML += `
-      <a href="user/category.html"><option value="${data[index].category_id}">${data[index].name}</option></a>
-        
-      `
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      categoryid.appendChild(option)
     })
-    
-  });
+  })
 }
-fetchCcategory();
+fetchCategory();
+
+categoryid.addEventListener("change", function() {
+  const selected = categoryid.value
+  if (selected) {
+    window.location.href = "./category.html"
+  }
+})

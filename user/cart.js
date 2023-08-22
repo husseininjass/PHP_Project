@@ -1,4 +1,31 @@
 let total=0;
+fetch('checkLogin.php',{
+    method: "POST",
+    headers:{
+        "Content-Type":"application/json",
+    },
+    body:JSON.stringify({
+}),
+})
+.then(response=>response.json())
+.then(data=>{
+    // console.log(data);
+    if(data == false){
+        document.getElementById('profileIcon').style.display='none';
+        document.getElementById('cartIcon').style.display='none';
+        document.getElementById('logoutIcon').style.display='none';
+
+    }else{
+        document.getElementById('loginLi').style.display='none';
+        document.getElementById('signupLi').style.display='none';
+        
+    }
+})
+.catch(error=>{
+    alert("Error:",error);
+})
+
+
 fetch("viewCart.php",{
     method: "POST",
     headers:{
@@ -156,4 +183,51 @@ document.getElementById('yesBtn').addEventListener('click', function(){
 
 document.getElementById("chkbtn").addEventListener('click',function(){
     window.location.href=('./payment.html');
+})
+
+function logout(){
+    fetch('logout.php',{
+        method: "POST",
+        headers:{
+            "Content-Type":"application/json",
+        },
+        body:JSON.stringify({
+    }),
+    })
+    .then(response=>response.json())
+    .then(data=>{
+        // console.log(data);
+        window.location.href=('../index.html');
+    })
+    .catch(error=>{
+        alert("Error:",error);
+    })
+}
+
+
+let categoryid = document.querySelector('#category');
+
+function fetchCategory() {
+  fetch('../admin/admin/cata.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(" "),
+  })
+  .then(r => r.json())
+  .then(function(data) {
+    data.forEach(function(e, index) {
+      const option = document.createElement("option");
+      option.value = data[index].category_id;
+      option.textContent = data[index].name
+      categoryid.appendChild(option)
+    })
+  })
+}
+fetchCategory();
+
+categoryid.addEventListener("change", function() {
+  const selected = categoryid.value
+  if (selected) {
+    window.location.href = "./category.html"
+  }
 })
