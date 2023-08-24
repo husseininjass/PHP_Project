@@ -7,66 +7,92 @@ body{
     overflow-y:auto;
     overflow-x: hidden;
     background-color: #ccc;
-
 }
 form {
-    width: 60%;
+    width: 50%;
     margin: 3% auto;
     text-align: center;
-    border: 5px solid rgb(0, 0, 0);
+    border: 5px solid rgb(133, 133, 223);
     border-radius: 10px;
     padding: 2%;
-    background-color: rgb(109, 109, 109);
+    background-color: rgba(75, 75, 154, 0.834);
+    backdrop-filter: blur(8px);
 }
-input{
+/* input{
     width:80%;
     margin:1%;
     padding: 2%;
     height: 40px;
-    background-color: #f2f2f5;
+    background-color: #d0dbf5;
     color:#301362;
-    border: 3px solid #a3a4a7;
+    border: 3px solid #4c639a;
     border-radius: 10px;
-}
+} */
+input {
+    background-color: #eee;
+    margin-bottom: 2rem;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    width: 50%;
+    border-radius: 1rem;
+    color: black;
+    box-shadow: 0 0.4rem #000000;
+    cursor: pointer;
+  }
+  
+  input:focus {
+    outline-color: rgb(255, 255, 255);
+  }
+  .button{
+    padding: 1%;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem #d04f4f;
+  }
+  
 select{
-    width:80%;
+    width:50%;
     margin:1%;
     padding: 2%;
     height: 60px;
-    background-color: #f2f2f5;
-    color:#301362;
-    border: 3px solid #a3a4a7;
+    background-color: #d0dbf5;
+    color:#000000;
+    border: 3px solid #000000;
     border-radius: 10px;
+    font-size: 1rem;
 }
 textarea{
-    width:80%;
+    width:50%;
     margin:1%;
     padding: 2%;
+    background-color: #ffffff;
+    color:#000000;
+    border: 3px solid #000000;
     background-color: #f2f2f5;
     color:#301362;
-    border: 3px solid #a3a4a7;
+    border: 3px solid #000000;
     border-radius: 10px;
 }
-input:hover,select:hover,textarea:hover{
+/* input:hover,select:hover,textarea:hover{
     border:2px solid #301362 ;
     background-color: rgb(186, 186, 206);
-}
+} */
 
-#submitBtn{
-    background-color:rgb(36, 36, 39);
+/* #submitBtn{
+    background-color:rgb(34, 34, 97);
     color: white;
     padding:0;
     font-size: 20px;
     font-weight: bolder;
-}
-#submitBtn:hover {
+} */
+/* #submitBtn:hover {
     width:85%;
     font-size: 22px;
     color: rgb(34, 34, 97);
-    background-color:#dfdfdf;;
+    background-color:#cddcff;;
     box-shadow: 2px 2px 10px white;
     transition: all .5s ease-in-out;
-}
+} */
 p {
     display: none;
 }
@@ -85,4 +111,9 @@ p {
 .invalid:before {
     content: "✖ ";
     text-align: center;
+}
+@media(min-width:280px) and (max-width:780px){
+    input{
+        font-size: 0.7rem;
+    }
 }
