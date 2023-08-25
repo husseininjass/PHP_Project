@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Zay Shop eCommerce HTML CSS Template</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    
+        <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="assets/css/templatemo.css">
+        <!-- <link rel="stylesheet" href="assets/css/custom.css"> -->
+        <link rel="stylesheet" href="nh2.css">
+    
+        <!-- Load fonts style after rendering the layout styles -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+        <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+        <!-- fontawesome -->
+        <script src="https://kit.fontawesome.com/a342f74175.js" crossorigin="anonymous"></script>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    </head>
+
+<body>
+
+<form method="post">
+      
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg navbar-light shadow bg-dark" >
+            <div class="container d-flex justify-content-between align-items-center">
+
+                <a class="navbar-brand logo h1 align-self-center a1"  href="index.html">
+                    POWER<span style="color: #59ab6e;">PC</span>MALL
+                </a>
+
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                    <div class="flex-fill">
+                        <ul class=" nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                            <li class="nav-item">
+                                <a class="a1 nav-link" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="a1 nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="a1 nav-link" href="shop.html">Shop</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="a1 nav-link" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navbar align-self-center d-flex">
+                    
+                        <a class="nav-icon position-relative text-decoration-none" href="user/login.html"  id="loginLi">
+                            <span class=" badge  bg-light text-dark">Login</span>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="user/signup.html" id="signupLi">
+                            <span class=" badge  bg-light text-dark">Sign up</span>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="#">
+                            <i id="cartIcon"  class="fa fa-fw fa-cart-arrow-down text-dark mr-1 a1" onclick="checkUser()"></i>
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="user/profile.html" id="profileIcon" >
+                            <i class="fa fa-fw fa-user text-dark mr-3 a1"></i>
+                        </a>
+                        <a class="nav-icon position-relative text-decoration-none" href="#" onclick="logout()">
+                        <i id="logoutIcon" class="fa-solid fa-right-from-bracket a1"></i>
+                        </a>   
+                        
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <!-- Close Header -->
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Open Content -->
+    <section class="bg-light">
+        <div class="container pb-5">
+            <div class="row">
+                <!-- <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="images/homepage/gc.jpg" alt="Card image cap" id="product-detail">
+                    </div>
+                   
+                </div> -->
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            
+                            <div id="div">
+                                <table id="table" border="2" width="100%" >
+                                </table>
+                            </div>
+                            <input type="button" id="deleteCartBtn" value="Delete Cart" class="btn btn-primary">
+                            <div id="deleteDiv" style="display: none;">
+                                <p id="deleteP">Are you sure you want to delete your cart?</p>
+                                <input type="button" id="yesBtn" value="Yes" class="btn btn-primary">
+                                <input type="button" id="noBtn" value="No" class="btn btn-primary">
+                            </div>
+                            <div id="totalDiv">
+                                <p id="totalPrice"></p>
+                                <input type="button" id="chkbtn" value="check out" class="btn btn-primary" >
+                            </div>
+                            
+
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="Activewear">
+                                <div class="row">
+
+                                    <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <li class="list-inline-item text-right">
+                                                Quantity
+                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                            </li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                                    </div>
+                                    <div class="col d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2">Active Wear</h1>
+                            <p class="h3 py-2">$25.00</p>
+                            
+
+                            <h6>Description:</h6>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            
+
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="Activewear">
+                                <div class="row">
+                                    
+                                    <div class="col-auto">
+                                        <ul class="list-inline pb-3">
+                                            <li class="list-inline-item text-right">
+                                                Quantity
+                                                <input type="hidden" name="product-quanity" id="product-quanity" value="1">
+                                            </li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                                    </div>
+                                    <div class="col d-grid">
+                                        <button type="submit" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    <!-- Close Content -->
+</form>    
+
+   
+
+
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">POWERPCMALL</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            123 Consectetur at ligula 10660
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Luxury</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
+                        <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
+                        <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
+                        <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
+                        <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li><a class="text-decoration-none" href="#">Home</a></li>
+                        <li><a class="text-decoration-none" href="#">About Us</a></li>
+                        <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
+                        <li><a class="text-decoration-none" href="#">FAQs</a></li>
+                        <li><a class="text-decoration-none" href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <div class="w-100 bg-black py-3">
+            
+        </div>
+
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <!-- End Script -->
+    <script src="user/cart.js"></script>
+    
+   
+
+</body>
+
+</html>
