@@ -166,7 +166,9 @@ body, ul, li, p, a, label, input, div {
   width: 6px;
   height: 6px;
 }
-
+.btn{
+  transform: translateX(10%);
+}
 @media (min-width: 576px) {
   .tempaltemo-carousel .h1 { font-size: 1em !important;}
 }

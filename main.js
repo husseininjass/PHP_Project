@@ -1,49 +1,49 @@
-fetch('user/checkLogin.php',{
-  method: "POST",
-  headers:{
-      "Content-Type":"application/json",
-  },
-  body:JSON.stringify({
-}),
-})
-.then(response=>response.json())
-.then(data=>{
-  // console.log(data);
-  if(data == false){
-      document.getElementById('profileIcon').style.display='none';
-      document.getElementById('cartIcon').style.display='none';
-      document.getElementById('logoutIcon').style.display='none';
+// fetch('user/checkLogin.php',{
+//   method: "POST",
+//   headers:{
+//       "Content-Type":"application/json",
+//   },
+//   body:JSON.stringify({
+// }),
+// })
+// .then(response=>response.json())
+// .then(data=>{
+//   // console.log(data);
+//   if(data == false){
+//       document.getElementById('profileIcon').style.display='none';
+//       document.getElementById('cartIcon').style.display='none';
+//       document.getElementById('logoutIcon').style.display='none';
 
-  }else{
-      document.getElementById('loginLi').style.display='none';
-      document.getElementById('signupLi').style.display='none';
+//   }else{
+//       document.getElementById('loginLi').style.display='none';
+//       document.getElementById('signupLi').style.display='none';
       
-  }
-})
-.catch(error=>{
-  alert("Error:",error);
-})
+//   }
+// })
+// .catch(error=>{
+//   alert("Error:",error);
+// })
 
-const swiper = new Swiper('.swiper', {
+// const swiper = new Swiper('.swiper', {
   
-    autoplay: {
-        delay: 2000, 
-        disableOnInteraction: false,
-    },
-    loop: true,
+//     autoplay: {
+//         delay: 2000, 
+//         disableOnInteraction: false,
+//     },
+//     loop: true,
   
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true, 
-    },
+//     pagination: {
+//       el: '.swiper-pagination',
+//       clickable: true, 
+//     },
   
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+//     navigation: {
+//       nextEl: '.swiper-button-next',
+//       prevEl: '.swiper-button-prev',
+//     },
   
    
-  });
+//   });
 
 //start the fetch job from here till we end 
 let category = document.querySelector('#category');
@@ -56,11 +56,17 @@ function fetchCategory() {
   })
   .then(r => r.json())
   .then(function(data) {
+    // console.log(data);
     data.forEach(function(e, index) {
-      const option = document.createElement("option");
-      option.value = data[index].category_id;
-      option.textContent = data[index].name
-      category.appendChild(option)
+      category.innerHTML += `
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <h5 class="text-center mt-3 mb-3">${data[index].name}</h5>
+                <form action="admin/admin/fetch_product.php" method="post">
+                <input type="hidden" name="category" value="${data[index].category_id}">
+                <input type="submit" value="go shop" name="submit" class="btn btn-success">
+                </form>
+            </div>
+      `
     })
   })
 }
