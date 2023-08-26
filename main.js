@@ -56,7 +56,7 @@ function fetchCategory() {
   })
   .then(r => r.json())
   .then(function(data) {
-    // console.log(data);
+    console.log(data);
     data.forEach(function(e, index) {
       category.innerHTML += `
             <div class="col-12 col-md-4 p-5 mt-3">

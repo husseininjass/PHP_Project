@@ -3,13 +3,12 @@
 if(isset($_POST['submit'])){
     $category_id = $_POST['category'];
     $query = "SELECT * FROM products WHERE category_id = $category_id";
-    $result = mysqli_query($conn,$query);
+    $result = $conn->query($query);
     $rows = array();
-    while($row = mysqli_fetch_assoc($result)) {
+    while($row = $result->fetch_assoc()) {
         $rows[] = $row; 
     }
-
     echo json_encode($rows); 
     header("Location: ../../shop.html");
+
 }
-?>
