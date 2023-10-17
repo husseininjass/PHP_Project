@@ -1,4 +1,5 @@
 let cards = document.querySelector('.row');
+let category = document.querySelector('.h2');
 function getProduct() {
     fetch('admin/admin/fetch_test.php', {
         method: 'POST',
@@ -32,8 +33,9 @@ function getProduct() {
             </div>
         </div>
             `
+           
         })
-      
+        
     })
 }
 getProduct();
